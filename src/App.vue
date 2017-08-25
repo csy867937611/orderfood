@@ -6,12 +6,20 @@
 </template>
 
 <script type="text/javascript">
-  import spinner from './component/spinner/spinner.vue'
+
+  var deviceWidth = document.documentElement.clientWidth;   
+  document.documentElement.style.fontSize = deviceWidth / 7.5 + 'px';
+  //1rem=100px  就是所有的css属性的属性值都是用rem来表示
+
+  import spinner from './component/spinner/spinner.vue';
+
   export default{
+    name: "app",
     components: {
       spinner
     }
   }
+
 </script>
 
 <style lang="scss">
