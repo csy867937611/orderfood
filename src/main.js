@@ -16,6 +16,9 @@ import App from './App.vue'
 import router from './router/index.js'
 import store from './vuex/store.js'
 import $ from 'jquery'
+import ElementUI from 'element-ui';
+
+Vue.use(ElementUI);
 
 //自定义指令
 Vue.directive('datepicker', {
@@ -41,6 +44,7 @@ Vue.directive('datepicker', {
 		});
 	}
 })
+
 
 new Vue({
   el: '#app',
