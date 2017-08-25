@@ -1,0 +1,42 @@
+body, html {
+	width: 100%;
+	height: 100%;
+}
+body, h1{
+  margin: 0;
+  padding: 0;
+}
+h1{
+	font-size: 0.4rem;
+	height: 100%;
+	line-height: 1rem;
+
+}
+.chen-body{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	.chen-header{
+	  width: 100%;
+	  height: 1rem;
+	  background: #ccc;
+	  margin: 0 auto;
+	  text-align: center;
+	}
+	.chen-content{
+		background: #ddd;
+	  	width: 100%;
+	  	flex: 1;
+
+	}
+	.chen-footer{
+		width: 100%;
+		height: 1rem;
+		background: #ccc;
+		margin: 0 auto;
+		text-align: center;
+		font-size: 0.4rem;
+		line-height: 1rem;
+	}
+}
