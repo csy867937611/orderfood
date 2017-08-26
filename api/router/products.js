@@ -22,4 +22,12 @@ exports.register = function (app){
 			response.send(data);
 		})
 	})
+
+	//菜品模糊查询；
+	app.post('/keyword', urlencodedParser, function(request, response){
+		console.log(request.body)
+		sql.keyword('products', request.body, function(data){
+			response.send(data);
+		})
+	})
 }
