@@ -21,31 +21,6 @@ import ElementUI from 'element-ui';
 import '../node_modules/element-ui/lib/theme-default/index.css'
 Vue.use(ElementUI);
 
-//自定义指令
-Vue.directive('datepicker', {
-	inserted: (element, binding, vnode) => {
-		var _datepicker = $(element).datepicker({
-			language: 'zh-CN',
-			pickTime: false,
-			todayBtn: true,
-			autoclose: true
-		}).on('changeDate', (ev) => {
-			var model = vnode.data.attrs['data-model'];
-			if(model){
-				var models = model.split('.')
-				var context = vnode.context
-				models.map((ele, idx) => {
-					if(idx == models.length - 1){
-						context[ele] = vnode.elm.value
-					} else {
-						context = context[ele]
-					}
-				})
-			}
-		});
-	}
-})
-
 
 new Vue({
   el: '#app',
