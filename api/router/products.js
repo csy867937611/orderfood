@@ -32,6 +32,12 @@ exports.register = function (app){
 	app.get('/page',function(req,res) {
 		sql.page('products',req.query,function(data) {
 			res.send(data)
+
+	//菜品模糊查询；
+	app.post('/keyword', urlencodedParser, function(request, response){
+		console.log(request.body)
+		sql.keyword('products', request.body, function(data){
+			response.send(data);
 		})
 	})
 }

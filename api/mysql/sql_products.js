@@ -50,5 +50,14 @@ module.exports = {
         	}
         })
 	},
+
+	//模糊查询；
+	keyword: function(table,data,callback){
+		var condition = "SELECT * FROM products WHERE CONCAT(name, ID, category, description ) LIKE  '%"+data.keyword+"%' ";
+		//查询数据库
+		sql.query( condition, function(err, results, fields){
+			callback({status: true,data: results})
+		})
+	}
 }
 
