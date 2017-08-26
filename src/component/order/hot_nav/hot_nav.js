@@ -3,7 +3,7 @@ import Vue from 'vue'
 
 const state = {
 	arr:[]
-}
+};
 
 const actions = {
 	ajax:(store,agr)=>{

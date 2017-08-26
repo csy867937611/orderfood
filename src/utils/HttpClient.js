@@ -8,16 +8,18 @@ import $ from 'jquery'
 const LOCAL_SERVER = 'http://localhost:81/cloudapi/';
 
 const DEV_SERVER = '';
-const PRO_SERVER = 'http://www.dk-lan.com/cloudapi/';
+const PRO_SERVER = 'http://localhost:1000/';
 
 function getUrl(path) {
     if (path.startsWith('http')) {
+        console.log(2,path, request)
         return path;
     }
     return `${PRO_SERVER}${path}`;
 }
 
 const errorHandler = (err) => {
+    console.log(3)
     if(err.response && err.response.status == 401 && JSON.parse(err.response.text).msg == 'unauthorized'){
         router.push({name: 'login'})
         return false;
@@ -32,10 +34,10 @@ const errorHandler = (err) => {
 
 const HttpClient = {
     get: (path, query) => new Promise((resolve, reject) => {
-        /*if(!window.localStorage.getItem('access_token')){
+        if(!window.localStorage.getItem('access_token')){
             router.push({name: 'login'});
             return false;
-        }*/
+        }
         $('.dk-spinner.dk-spinner-three-bounce, dk-spinner-mask').parent('div').show()
         var req = request
             .get(getUrl(path))
@@ -53,10 +55,11 @@ const HttpClient = {
     }),
 
     post: (path, formdata, query) => new Promise((resolve, reject) => {
-        if(path.indexOf('login/index') < 0 && !window.localStorage.getItem('access_token')){
-            router.push({name: 'login'});
-            return false;            
-        }        
+        // if(path.indexOf('login/index') < 0 && !window.localStorage.getItem('access_token')){
+        //     router.push({name: 'login'});
+        //     return false;            
+        // }  
+        console.log(1)      
         $('.dk-spinner.dk-spinner-three-bounce, dk-spinner-mask').parent('div').show()
         request
             .post(getUrl(path))
