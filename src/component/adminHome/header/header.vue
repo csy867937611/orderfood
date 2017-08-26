@@ -1,7 +1,7 @@
 <template>
 	<div class="cyq-header">
 		<ul>
-			<li><router-link to="/">点餐系统后台管理</router-link></li>
+			<li><router-link to="/">点餐系统后台</router-link></li>
 		</ul>
 		<ul>
 			<li>

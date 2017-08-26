@@ -1,3 +1,4 @@
+import $ from 'jquery'
 //插件样式
 import './assets/bootstrap/css/bootstrap.min.css'
 import './assets/common/common.scss'
@@ -6,7 +7,7 @@ import './assets/jquery-confirm/jquery-confirm.css'
 import './assets/bootstrap/datepicker/css/datepicker.css'
 
 //插件
-import './assets/bootstrap/datepicker/js/bootstrap-datepicker'
+import './assets/bootstrap/datepicker/js/bootstrap-datepicker.js'
 import './assets/jquery-validation-1.15.0/dist/jquery.validate.js'
 import './assets/jquery-validation-1.15.0/dist/localization/messages_zh.js'
 import './assets/jquery-confirm/jquery-confirm.js'
@@ -15,7 +16,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
 import store from './vuex/store.js'
-import $ from 'jquery'
+
 import ElementUI from 'element-ui';
 
 Vue.use(ElementUI);

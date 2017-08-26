@@ -13,7 +13,7 @@ Vue.use(VueRouter);
 const router = new VueRouter({
 	routes:[
 		{path:'/',component:order},
-		{path:'/adminHome',component:adminHome}
+		{path:'/adminHome',component:adminHome},
 		{path:'/home',component:home},
 		{path:'/waiter',component:waiter}
 	]
