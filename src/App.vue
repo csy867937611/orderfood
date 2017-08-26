@@ -12,7 +12,7 @@
   document.documentElement.style.fontSize = deviceWidth / 7.5 + 'px';
   //1rem=100px  就是所有的css属性的属性值都是用rem来表示
 
-  import spinner from './components/spinner/spinner.vue';
+  import spinner from './component/spinner/spinner.vue';
 
   export default{
     name: "app",

@@ -1,78 +1,33 @@
 <template>
-	<div class="chen-nav">
-		<el-collapse accordion>
-  			<el-collapse-item title="招牌菜" name="1">
-	        	<p>老司机醉鹅</p>
-	        	<p>白切鸡</p>
-	        	<p>卤水鸭</p>
-	        	<p>白云猪手</p>
-	        	<p>油炸山坑鱼</p>
-	        	<p>一家欢卤水拼盘</p>
-	        </el-collapse-item>
-    		<!-- <el-collapse-item title="广东菜" name="2">
-    			        	<p>老司机醉鹅</p>
-    			        	<p>白切鸡</p>
-    			        	<p>卤水鸭</p>
-    			        	<p>白云猪手</p>
-    			        	<p>油炸山坑鱼</p>
-    			        	<p>一家欢卤水拼盘</p>
-    			        </el-collapse-item>
-    		<el-collapse-item title="四川菜" name="3">
-    			        	<p>老司机醉鹅</p>
-    			        	<p>白切鸡</p>
-    			        	<p>卤水鸭</p>
-    			        	<p>白云猪手</p>
-    			        	<p>油炸山坑鱼</p>
-    			        	<p>一家欢卤水拼盘</p>
-    			        </el-collapse-item>
-    		<el-collapse-item title="重庆菜" name="4">
-    			        	<p>老司机醉鹅</p>
-    			        	<p>白切鸡</p>
-    			        	<p>卤水鸭</p>
-    			        	<p>白云猪手</p>
-    			        	<p>油炸山坑鱼</p>
-    			        	<p>一家欢卤水拼盘</p>
-    			        </el-collapse-item>
-    		<el-collapse-item title="山东菜" name="5">
-    			        	<p>老司机醉鹅</p>
-    			        	<p>白切鸡</p>
-    			        	<p>卤水鸭</p>
-    			        	<p>白云猪手</p>
-    			        	<p>油炸山坑鱼</p>
-    			        	<p>一家欢卤水拼盘</p>
-    			        </el-collapse-item>
-    		<el-collapse-item title="点心" name="6">
-    			        	<p>老司机醉鹅</p>
-    			        	<p>白切鸡</p>
-    			        	<p>卤水鸭</p>
-    			        	<p>白云猪手</p>
-    			        	<p>油炸山坑鱼</p>
-    			        	<p>一家欢卤水拼盘</p>
-    			        </el-collapse-item>
-    		<el-collapse-item title="酒水/饮料" name="7">
-    			       		<p>老司机醉鹅</p>
-    			        	<p>白切鸡</p>
-    			        	<p>卤水鸭</p>
-    			        	<p>白云猪手</p>
-    			        	<p>油炸山坑鱼</p>
-    			        	<p>一家欢卤水拼盘</p>
-    			        </el-collapse-item> -->
-		</el-collapse>
-	</div>
+	<ul class = "chen-list">
+		<li v-for = "(value, key) in this.$store.state.nav.data">
+				<span @click = "getCategory"><router-link :to = "'/'+value">{{value}}</router-link></span>
+        </li>
+	</ul>
 </template>
 
 <script>
+	import http from '../../utils/HttpClient';
+	import $ from 'jquery';
+	import './nav.scss'
 	export default {
-		data: function(){
-			return {
-				data: [1, 2]
-			}
-		},
-		created:function(){
-			console.log(888)
-		},
+		// data: function(){
+		// 	return {
+		// 		data: [1, 2]
+		// 	}
+		// },
+		// created:function(){
+		// 	console.log(888)
+		// },
 		mounted: function(){
-			console.log(this.data)
+			this.$store.dispatch("chendata");
+		},
+		methods: {
+			getCategory: function(event){
+				var category = event.target.innerText;
+				$(event.target).parents("li").addClass("chen-active").siblings().removeClass("chen-active");
+				this.$store.dispatch("category", {category});
+			}
 		}
 	}
 </script>

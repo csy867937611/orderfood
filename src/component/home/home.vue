@@ -4,20 +4,24 @@
 	      <h1>小蚂蚁点餐系统</h1>
 	    </div>
 	    <div class="chen-content">
-	      <div class="chen-nav">
+	      
 	      	<ChenNav></ChenNav>
+	   
+	      <div class="chen-main">
+	      	<router-view></router-view>
 	      </div>
-	      <div class="chen-main"></div>
 	    </div>
 	    <div class="chen-footer">footer</div>
 	</div>
 </template>
 <script>
 	import ChenNav from '../nav/nav.vue';
+	import foodlist from '../foodlist/foodlist.vue';
 	import './home.scss';
 	export default {
 		components: {
-			ChenNav
+			ChenNav,
+			foodlist
 		}
 	}
 </script>
