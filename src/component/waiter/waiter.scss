@@ -1,8 +1,46 @@
 *{margin:0;padding:0;}
 .waiterLook{
+	padding-bottom: 0.27rem;
 	.header{
-		font-size:0.21rem;
-		background:#dfe2eb;
-		span{font-size:0.21rem;margin-right:0.13rem;}
+		.headero{
+			height:1.33rem;
+			background:#acbf31;
+			span{
+				font-size: 0.53rem;
+				line-height: 1.33rem;
+				display: block;
+				width:100%;
+				text-align:center;
+			}
+		}
+		.headert{
+			font-size:0.21rem;
+			padding:0.13rem;
+			background:#fff;
+			span{font-size:0.21rem;margin-right:0.13rem;}
+		}
+	}
+	.body{
+		.find{
+			
+		}
+		.aoh{
+			width:95%;
+			background:#fff;
+			margin:0 auto;
+			ul{
+				background:#f19aa0;
+				display: inline-block;
+				width:1.33rem;
+				li{
+					font-size:0.32rem;
+					margin:0 auto;
+				}
+				li:nth-of-type(1){
+					font-size: 0.4rem;
+				}
+			}
+		}
+		
 	}
 }
