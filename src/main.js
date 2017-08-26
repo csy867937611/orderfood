@@ -18,7 +18,7 @@ import router from './router/index.js'
 import store from './vuex/store.js'
 
 import ElementUI from 'element-ui';
-
+import '../node_modules/element-ui/lib/theme-default/index.css'
 Vue.use(ElementUI);
 
 //自定义指令

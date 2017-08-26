@@ -26,11 +26,11 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-          test: /\.(jpe?g|png|gif|svg)$/i,
-          use: [{
-            loader: 'url-loader',
-            options: {query: {
-                name: path.join(__dirname, 'assets/[name].[hash:7].[ext]')
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [{
+          loader: 'url-loader',
+          options: {query: {
+              name: path.join(__dirname, 'assets/[name].[hash:7].[ext]')
               }
             }
           },{
@@ -56,6 +56,13 @@ module.exports = {
       {
         test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
         loader: 'file-loader'
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]?[hash]'
+        }
       },
       {
           test: /\.scss$/,

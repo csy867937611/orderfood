@@ -28,6 +28,13 @@ h1{
 		background: #ddd;
 	  	width: 100%;
 	  	flex: 1;
+	  	display: flex;
+	  	flex-direction: row;
+
+	  	.chen-main{
+	  		overflow-X: hidden;
+	  		width: 100%;
+	  	}
 
 	}
 	.chen-footer{
