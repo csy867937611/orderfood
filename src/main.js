@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import baseurl from './assets/common/common.js'
 //插件样式
 import './assets/bootstrap/css/bootstrap.min.css'
 import './assets/common/common.scss'

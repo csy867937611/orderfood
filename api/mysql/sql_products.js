@@ -99,7 +99,7 @@ module.exports = {
 		//所有数据数量
 		var total = 0;
 		var _condition = "select * from products";
-		conn.query(_condition, function(err,res){
+		sql.query(_condition, function(err,res){
 			total = res.length;
 		});
 
@@ -136,7 +136,7 @@ module.exports = {
 		//所有数据数量
 		var total = 0;
 		var _condition = `select * from ${data.table}`;
-		conn.query(_condition, function(err,res){
+		sql.query(_condition, function(err,res){
 			total = res.length;
 		});
 
