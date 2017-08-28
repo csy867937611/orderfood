@@ -4,7 +4,8 @@ import Vue from 'vue';
 const state = {
 	data: [], 
 	all: [],
-	category: []
+	category: [],
+	className: []
 };
 
 const actions = {
@@ -15,6 +16,10 @@ const actions = {
  	category: (store, arg)=>{
  		console.log('action', arg)
  		store.commit('category', arg);
+ 	},
+ 	chenKeyword: (store, arg)=>{
+ 		console.log('chenKeyword')
+ 		store.commit('chenKeyword', arg);
  	}
 };
 
@@ -58,6 +63,12 @@ const mutations = {
 		// 	console.log(res);
 		// 	state.category = res;
 		// })
+	},
+	chenKeyword: (data, arg)=>{
+		http.post('keyword', arg).then(res=>{
+			console.log('success', res)
+			state.category = res.data
+		})
 	}
 };
 

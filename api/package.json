@@ -10,7 +10,11 @@
   },
   "devDependencies": {
     "mysql": "^2.14.1"
+<<<<<<< HEAD
     },
+=======
+  },
+>>>>>>> 97ffeede5fdf3992ee2b078b4f531c65734f831d
   "author": "DK.Lan",
   "license": "ISC",
   "dependencies": {

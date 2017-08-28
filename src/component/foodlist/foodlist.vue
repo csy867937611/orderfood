@@ -1,6 +1,6 @@
 <template>
 	<div class="chen-foodlist">
-		<div class="chen-food" v-for = "(value, key) in this.$store.state">
+		<div class="chen-food" v-for = "(value, key) in this.$store.state.nav.category">
 			<img :src="'./src/assets/imgs/' + value.imgurl" alt="">
 			<div class="chen-details">
 				<p class="chen-name">{{value.name}}</p>

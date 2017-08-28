@@ -1,43 +1,49 @@
 <template>
-	<div class="cyq-container">
-		<cyq-header></cyq-header>
-		<div class="cyq-body">
-			<cyq-nav></cyq-nav>
-			<div class="cyq-content">
-				<div class="cyq-toolbar" style="background:#fff;">
-					<a href="javascript:" class="btn btn-primary btn -sm" :class="value.class" v-if="toolList" v-for="(value,key) in toolList" @click="click(value)">{{value.text ? value.text : key}}</a>
+	<div class="dk-container">
+		<dk-header></dk-header>
+		<div class="dk-body">
+			<dk-nav></dk-nav>
+			<div class="dk-content">
+				<div class="dk-toolbar" style="background: #fff;">
+					<a href="javascript:" class="btn btn-primary btn-sm" :class="value.class" v-if="toolList" v-for="(value,key) in toolList" @click="click(value)">{{value.text ? value.text : key}}</a>
 				</div>
-				<router-view class="cyq-viewer"></router-view>
+				<router-view class="dk-viewer"></router-view>
 			</div>
 		</div>
-		<div class="cyq-footer">@cyq</div>	
-	</div>
+		<div class="dk-footer">@dk</div>
+	</div>	
 </template>
 
-<script>
+<script type="text/javascript">
 	import './home.scss'
 	import nav from './nav/nav.vue'
 	import header from './header/header.vue'
 
 	export default {
 		components: {
-			'cyq-nav': nav,
-			'cyq-header':header
+			'dk-nav': nav,
+			'dk-header': header
 		},
-		data: function() {
+		data(){
 			return {
-				toolList:null
+				toolList: null
 			}
 		},
 		methods: {
-			addTool(arg) {
+			addTool(arg){
 				this.toolList = arg
 			},
-			click(arg) {
-				if(arg.event) {
+			click(arg){
+				if(arg.event){
 					arg.event()
 				}
 			}
+		},
+		created(){
+			// this.$on('dk', (a) => {
+			// 	// this.msg = 'dk'
+			// 	console.log(a)
+			// })
 		}
 	}
 </script>

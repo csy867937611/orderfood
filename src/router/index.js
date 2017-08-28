@@ -1,4 +1,3 @@
-
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import order from '../component/order/order.vue'
@@ -8,6 +7,9 @@ import jiedan from '../component/jiedan/jiedan.vue'
 import home from '../component/home/home.vue';
 import waiter from '../component/waiter/waiter.vue';
 import foodlist from '../component/foodlist/foodlist.vue';
+import clients from '../component/clients/clients.vue'
+import client from '../component/client/client.vue'
+import detail from '../component/waiter/details/detail.vue';
 
 
 Vue.use(VueRouter);
@@ -15,7 +17,10 @@ Vue.use(VueRouter);
 const router = new VueRouter({
 	routes:[
 		{path:'/',component:order},
-		{path:'/adminHome',component:adminHome},
+		{path:'/adminHome', component:adminHome, children:[
+			{path:'/clients', name:'clients', component:clients},
+			{path:'/client', name:'client', component:client}
+		]},
 		{path:'/home',component:home},
 		//{path: '/home', component: foodlist},设置默认级路由并显示；
 
@@ -32,8 +37,13 @@ const router = new VueRouter({
 			]
 		},
 		{path:'/waiter',component:waiter},
+
 		{path:'/kitchen',component:kitchen},
 		{path:'/jiedan',component:jiedan},
+
+		{path:'/detail',component:detail}
+
+
 	]
 })
 
