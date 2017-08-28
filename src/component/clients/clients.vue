@@ -16,7 +16,7 @@
             return {
                 tools: {
                     add: {
-                        text: '添加客户',
+                        text: '添加菜品',
                         event: function(){
                             router.push({name: 'client'})
                         }

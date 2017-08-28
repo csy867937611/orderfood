@@ -1,75 +1,117 @@
 <template>
     <div>
-        <div class="dk-form">
-            <form ref="clientForm" role="form" class="form-horizontal ng-pristine ng-valid">
-                <div class="form-group">
-                    <div class="col-sm-1">
-                        <span class="col-sm-12 control-label">姓名</span>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="dk-form-element">
-                            <input type="text" name="name" v-model="dataform.name" class="form-control required">
-                        </div>
-                    </div>
-                    <div class="col-sm-1">
-                        <span class="col-sm-12 control-label">性别</span>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="dk-form-element">
-                            <select v-model="dataform.gender"  name="gender" class="form-control required">
-                                <option value="男">男</option>
-                                <option value="女">女</option>
-                            </select>
-                        </div>
-                    </div>     
-                    <div class="col-sm-1">
-                        <span class="col-sm-12 control-label">电话</span>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="dk-form-element">
-                            <input type="text" name="tel" v-model="dataform.tel" class="form-control required">
-                        </div>
-                    </div>                                     
-                </div>  
-                <div class="form-group">
-                    <div class="col-sm-1">
-                        <span class="col-sm-12 control-label">出生日期</span>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="dk-form-element">
-                            <input  type="text" name="birthday" data-model="dataform.birthday" v-model="dataform.birthday" class="date-picker  form-control" data-date-format="yyyy-mm-dd">
-                        </div>
-                    </div>
-                    <div class="col-sm-1">
-                        <span class="col-sm-12 control-label">证件号码</span>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="dk-form-element">
-                            <input type="text" name="identityno" v-model="dataform.identityno" class="form-control required">
-                        </div>
-                    </div> 
-                    <div class="col-sm-1">
-                        <span class="col-sm-12 control-label">入职时间</span>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="dk-form-element">
-                            <input  type="text" data-date-format="yyyy-mm-dd" name="Inductiontime" data-model="dataform.Inductiontime" v-model="dataform.Inductiontime" class="date-picker  form-control">
-                        </div>
-                    </div>                        
-                                  
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-1">
-                        <span class="col-sm-12 control-label">地址</span>
-                    </div>
-                    <div class="col-sm-5">
-                        <div class="dk-form-element">
-                            <input type="text" name="address" v-model="dataform.address" class="form-control required">
-                        </div>
-                    </div>   
-                </div>                                
-            </form>
-        </div>
+        <el-form :inline="true" ref="cyqform" :rules="rules" :model="editData" class="demo-form-inline">
+            <el-form-item label="ID:" prop="ID">
+                <el-input v-model="editData.ID"  placeholder="ID" ></el-input>
+            </el-form-item>
+            <el-form-item label="name:" prop="name">
+                <el-input v-model="editData.name"  placeholder="菜名" ></el-input>
+            </el-form-item>
+            <el-form-item label="description:">
+                <el-input v-model="editData.description"  placeholder="描述"></el-input>
+            </el-form-item>
+            <el-form-item label="category:" prop="category">
+                <el-select v-model="editData.category"  placeholder="请选择" >
+                    <el-option
+                      v-for="item in options"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="nowPrice:" prop="nowPrice">
+                <el-input v-model="editData.nowPrice"  placeholder="销售价" ></el-input>
+            </el-form-item>
+            <el-form-item label="oldPrice:">
+                <el-input v-model="editData.oldPrice" placeholder="原价"></el-input>
+            </el-form-item>
+            <el-form-item label="discount:">
+                <el-input v-model="editData.discount" placeholder="折扣"></el-input>
+            </el-form-item>
+            <el-form-item label="time:" prop="time">
+                <el-input v-model="editData.time" name="time" placeholder="制作时间:多少分钟" required></el-input>
+            </el-form-item>
+            <el-form-item label="sales:">
+                <el-input v-model="editData.sales"  name="sales" placeholder="月售量" required></el-input>
+            </el-form-item>
+            <el-form-item label="isNew:">
+                <el-select v-model="editData.isNew" placeholder="请选择">
+                    <el-option
+                      v-for="item in option"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="isFmous:">
+                <el-select v-model="editData.isFmous" placeholder="请选择">
+                    <el-option
+                      v-for="item in option"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="imgurl:" prop="imgurl">
+                <el-input v-model="editData.imgurl" placeholder="月售量" ></el-input>
+            </el-form-item>
+            <el-form-item label="remain:">
+                <el-input v-model="editData.remain" placeholder="库存量"></el-input>
+            </el-form-item>
+            <el-form-item label="limit1:">
+                <el-select v-model="editData.limit1" placeholder="请选择">
+                    <el-option
+                      v-for="item in option"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="isSellOut:">
+                <el-select v-model="editData.isSellOut" placeholder="请选择">
+                    <el-option
+                      v-for="item in option"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="pass100:">
+                <el-select v-model="editData.pass100" placeholder="请选择">
+                    <el-option
+                      v-for="item in option"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="pass200:">
+                <el-select v-model="editData.pass200" placeholder="请选择">
+                    <el-option
+                      v-for="item in option"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="promotion:">
+                <el-select v-model="editData.promotion" placeholder="请选择">
+                    <el-option
+                      v-for="item in option"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+        </el-form>
     </div>
 </template>
 
@@ -80,7 +122,77 @@
     export default {
         data(){
             return {
-                dataform: {},
+                editData: {
+                    ID: '',
+                    name: '',
+                    description: '',
+                    category: '',
+                    nowPrice: '',
+                    oldPrice: '',
+                    discount: '',
+                    time: '',
+                    sales: '',
+                    isNew: '',
+                    isFmous: '',
+                    imgurl: '',
+                    remain: '',
+                    limit1: '',
+                    isSellOut: '',
+                    pass100: '',
+                    pass200: '',
+                    promotion: ''
+
+                },
+                options:[{
+                    value: '沙拉',
+                    label: '沙拉'
+                    }, {
+                    value: '小吃',
+                    label: '小吃'
+                    }, {
+                    value: '主菜',
+                    label: '主菜'
+                    }, {
+                    value: '汤品',
+                    label: '汤品'
+                    }, {
+                    value: '主食',
+                    label: '主食'
+                    }, {
+                    value: '甜点',
+                    label: '甜点'
+                    }, {
+                    value: '饮品',
+                    label: '饮品'
+                }],
+                option:[{
+                    value: 'true',
+                    label: 'true'
+                    },{
+                    value: 'false',
+                    label: 'false'
+                }],
+                rules:{
+                    ID:[{
+                        required: true, message: '请输入菜品的ID', trigger: 'blur'
+                    }],
+                    name:[{
+                        required: true, message: '请输入活动名称', trigger: 'blur' 
+                    }],
+                    category:[{
+                        required: true, message: '请选择分类',trigger: 'blur'
+                    }],
+                    nowPrice:[{
+                        required: true, message: '请输入价格',trigger: 'blur'
+                    }],
+                    imgurl:[{
+                        required: true, message: '请输入图片路径',trigger: 'blur'
+                    }],
+                    time:[{
+                        required: true, message: '请输入制作时间', trigger: 'blur'
+                    }]
+
+                }
             }
         },
         created(){
@@ -90,9 +202,17 @@
                 add: {
                     text: '保存',
                     event: () => {
-                        if(!$(this.$refs.clientForm).valid()){
+                        /*if(!this.$refs.cyqform.$el.validate()){
                             return false;
-                        }
+                        }*/
+                        this.$refs.cyqform.validate((valid)=>{
+                            if(valid){
+                                alert('submit!')
+                            }else{
+                                console.log('error submit!!')
+                                return false;
+                            }
+                        })
                         /*http.post('Employee/Save', self.dataform)
                         .then(response => {
                             if(response.status){
@@ -103,7 +223,10 @@
                                 $.alert(response.msg);
                             }
                         })*/
-
+                        console.log(this.editData)
+                        $.post('http://localhost:1000/addProduct',this.editData,function(res) {
+                            console.log(res)
+                        })
                     },
                 },
                 back: {
