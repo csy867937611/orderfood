@@ -2,7 +2,7 @@
 	<div class="waiterLook">
 		<div class="header">
 			<div class="headero">
-				<span>西餐厅</span>
+				<span>小蚂蚁餐厅</span>
 			</div>
 		</div>
 		<div class="body">
@@ -11,9 +11,11 @@
 			</div>
 			<div class="aoh">
 				<ul v-for="(obj,index) in this.$store.state.waiter.arraoh" :ref="index" :id="index">
-					<li v-for="(value,key) in obj">
-						<span>{{value}}</span>
-					</li>
+					<router-link :to="{path:'detail',query:{index}}">
+						<li v-for="(value,key) in obj">
+							<span>{{value}}</span>
+						</li>
+					</router-link>
 				</ul>
 			</div>
 		</div>
