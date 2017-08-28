@@ -3,6 +3,11 @@
     <div class="dk-toolbar dk-grid-toolbar" :id="toolbar_id" v-if="toolbar">
       <a href="javascript:" class="btn btn-primary btn-sm" v-if="toolList" v-for="(value,key) in toolList" @click="click(value)">{{value.text ? value.text : key}}</a>
     </div>
+    <div style="margin-top: 15px;" class="search">
+      <el-input placeholder="请输入ID/菜名/菜系/描述" v-model="input">
+        <el-button slot="append" icon="search" @click="search"></el-button>
+      </el-input>
+    </div>
     <el-table class="table" :data="dataset" height="560" border style="width: 100%">
       <el-table-column
         prop="ID"
@@ -108,6 +113,7 @@
 			return {
         dataset: [],
         toolList: null,
+        input:'',
         qty:0,
         total:0,
         page:0,
@@ -132,6 +138,17 @@
             evt.event()
         }
       },
+
+      //搜索菜名
+      search() {
+        let self = this
+        $.get(baseurl + 'search',{keyword:self.input},function(res) {
+            console.log(res)
+            self.dataset = res.data
+            self.total   = res.data.length
+        })
+      }, 
+
       //删除菜品
       remove(evt) {
         console.log(baseurl)
