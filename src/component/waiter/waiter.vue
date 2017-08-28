@@ -10,8 +10,8 @@
 				<el-input v-model="input" placeholder="查询台号" @blur="find(input)"></el-input>
 			</div>
 			<div class="aoh">
-				<ul v-for="(obj,index) in this.$store.state.waiter.arraoh" :ref="index" :id="index">
-					<router-link :to="{path:'detail',query:{index}}">
+				<ul v-for="(obj,index) in this.$store.state.waiter.arraoh" :ref="obj.id" :id="obj.id">
+					<router-link :to="{path:'detail',query:{obj}}">
 						<li v-for="(value,key) in obj">
 							<span>{{value}}</span>
 						</li>
@@ -42,6 +42,7 @@
 	import Vue from 'vue'
 	import ElementUI from 'element-ui'
 	import 'element-ui/lib/theme-default/index.css'
+	import $ from 'jquery';
 
 	Vue.use(ElementUI) 
 
@@ -56,9 +57,14 @@
 		},
 		methods:{
 			find:function(value){
-				console.log(this);
+				console.log(this.$refs);
+				console.log(value);
 				if(value != ''){
-					this.$store.dispatch('find',value);
+					if(this.$refs[value]){
+						$(this.$refs[value][0]).siblings().css({display:'none'});
+					}
+				}else{
+					console.log(6)
 				}
 				
 			}
