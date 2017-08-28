@@ -8,7 +8,9 @@
     "build": "webpack --progress --colors",
     "start": "webpack-dev-server --devtool eval --progress --port 1703 --colors --content-base ./"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mysql": "^2.14.1"
+  },
   "author": "DK.Lan",
   "license": "ISC",
   "dependencies": {

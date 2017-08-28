@@ -1,65 +1,66 @@
 <template>
-	<div :class="['cyq-nav-content', navOpen ? '' : 'toggle']" ref="cyqnav">
-		<ul class="cyq-nav">
-			<li class="cyq-nav-item nav-toggle">
-				<a href="javascript:" class="btn btn-primary" @click="toggleNav">
-					<i class="fa fa-bars"></i>
+	<div :class="['dk-nav-content', navOpen ? '' : 'toggle']" ref="dknav">
+		<ul class="dk-nav">
+			<li class="dk-nav-item nav-toggle">
+				<a class="btn btn-primary" href="javascript:" >
+					<i class="fa fa-bars"></i> 
 				</a>
 			</li>
-			<li class="cyq-nav-item" @click="toggleNavItem">
+			<li class="dk-nav-item" @click="toggleNavItem">
 				<a href="javascript:">
 					<i class="fa fa-file-o"></i>
-					<span>菜单管理</span>
+					<span>档案管理</span>
 					<i class="fa fa-angle-left"></i>
 				</a>
-				<ul class="cyq-sub-nav">
-					<li><router-link to="/">菜单浏览</router-link></li>
-					<li><router-link to="/">菜单查询</router-link></li>
+				<ul class="dk-sub-nav">
+					<li><router-link to="/clients">客户档案</router-link></li>
+					<li><router-link to="/">产品档案</router-link></li>
+					<li><router-link to="/">供应商档案</router-link></li>
+					<li><router-link to="/">人事档案</router-link></li>
 				</ul>
 			</li>
-			<li class="cyq-nav-item" @click="toggleNavItem">
+			<li class="dk-nav-item" @click="toggleNavItem">
 				<a href="javascript:">
 					<i class="fa fa-cog"></i>
 					<span>系统设置</span>
 					<i class="fa fa-angle-left"></i>
 				</a>
-				<ul class="cyq-sub-nav">
-					<li><router-link to="/">待定</router-link></li>
-					<li><router-link to="/">待定</router-link></li>
+				<ul class="dk-sub-nav">
+					<li><router-link to="/">修改密码</router-link></li>
+					<li><router-link to="/">修改信息</router-link></li>
+					<li><router-link to="/">权限设置</router-link></li>
+					<li><router-link to="/">模块设置</router-link></li>
 				</ul>
-			</li>	
+			</li>					
 		</ul>
-	</div>
+	</div>	
 </template>
 
-<script>
+<script type="text/javascript">
 	import './nav.scss'
 	import $ from 'jquery'
 
 	export default {
-		data() {
+		data(){
 			return {
 				navOpen: true
 			}
 		},
-		methods: {
-			toggleNavItem(event) {
-				if(!this.navOpen) {
+		methods:{
+			toggleNavItem(event){
+				if(!this.navOpen){
 					this.navOpen = true;
 				}
 				let self = $(event.target);
-				if(self.closest('.cyq-sub-nav')[0]) {
+				if(self.closest('.dk-sub-nav')[0]){
 					return;
 				}
-				if(!self.is('.cyq-nav-item')) {
-					self = self.closest('.cyq-nav-item');
+				if(!self.is('.dk-nav-item')){
+					self = self.closest('.dk-nav-item');
 				}
 				self.toggleClass('active');
-			},
-			toggleNav(event) {
-				this.navOpen = !this.navOpen;
-				$('.cyq-nav-item').removeClass('active');
 			}
 		}
+		//	
 	}
 </script>
