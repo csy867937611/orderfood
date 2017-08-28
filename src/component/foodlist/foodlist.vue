@@ -4,7 +4,7 @@
 		:on-icon-click="iconSearch"></el-input>
 		<div class="chen-foodlist">
 			
-			<div class="chen-food" v-for = "(value, key) in this.$store.state.nav.category">
+			<div class="chen-food" v-for = "(value, key) in this.$store.state.nav.category" :key="value.ID">
 				<img :src="'./src/assets/imgs/' + value.imgurl" alt="">
 				<div class="chen-details">
 					<p class="chen-name">{{value.name}}</p>
