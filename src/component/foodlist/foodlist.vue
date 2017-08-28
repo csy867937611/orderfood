@@ -1,24 +1,43 @@
 <template>
+<div class = "chen-main">
+	<div class = "chen-show" v-show = "show">
+		<div class="chen-showPic" @touchmove = "touchmove">
+			<div class="chen-close" @click = "closePic">&times;</div>
+			<div class="chen-prev" @click = "prevPic"><i class="iconfont icon-prev"></i></div>
+			<div class="chen-next" @click = "nextPic"><i class="iconfont icon-next"></i></div>
+			<div class="chen-detailsList">
+				<div class="chen-details" v-for = "(value, key) in this.$store.state.nav.category" :key= "value.ID">
+					<img :src="'./src/assets/imgs/' + value.imgurl" alt="" />
+					<span>{{value.name}}</span>
+					<span>{{value.nowPrice}}元/份</span>
+					<span class = "chen-add" @click = "chenAdd">点</span>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class = "chen-all">
 		<el-input placeholder="请输入内容" icon="search" class = "chen-search" v-model="keyword" 
 		:on-icon-click="iconSearch"></el-input>
 		<div class="chen-foodlist">
 			
-			<div class="chen-food" v-for = "(value, key) in this.$store.state.nav.category">
-				<img :src="'./src/assets/imgs/' + value.imgurl" alt="">
+			<div class="chen-food" v-for = "(value, idx) in this.$store.state.nav.category"  >
+				<div class = "chen-img">
+					<img :src="'./src/assets/imgs/' + value.imgurl" alt="" @click = "showPic" />
+				</div>
 				<div class="chen-details">
 					<p class="chen-name">{{value.name}}</p>
 					<p class = "chen-price">价格：{{value.nowPrice}}</p>
 					<p class = "chen-time">工时：{{value.time}}分钟</p>
 				</div>
-				<div class="chen-car" :id = "value.ID">
-					<p class="chen-sub" @click = "sup" >减</p>
-					<input type="number" class="chen-num" />
+				<div class="chen-car" :data-id = "value.ID" >
+					<p class="chen-sub" @click = "sup" v-show = "value.num > 0">减</p>
+					<input type="number" class="chen-num" v-show = "value.num > 0" :value = "value.num" />
 					<p class="chen-add" @click = "add">点</p>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </template>
 <script>
 	import './foodlist.scss';
@@ -27,59 +46,147 @@
 		data: function(){
 			return {
 				show: false,
-				count: 0,
-				keyword: ''
+				keyword: '',
+				arr: []
 			}
 		},
+		mounted: function(){
+			var cart;
+			if(localStorage.cart){
+				cart = JSON.parse(localStorage.cart);
+			} else {
+				cart = [];
+			};
+			this.$store.state.nav.cart = cart;
+			console.log(this.$store.state.nav.cart);
+		},
 		methods: {
+			touchmove: function(e){
+				console.log(123)
+				e.preventDefault();
+			  
+			},
 			add: function(event){
 				// 当前菜品ID；
-				var currentId = $(event.target).parent().attr('id');
-				// console.log(currentId)
+				var currentId = $(event.target).parent().attr('data-id');
 
-				$(event.target).siblings().show();
-				var val = event.target.previousElementSibling.value;
-				if(val){
-					console.log('val', val);
-					val++;
-					event.target.previousElementSibling.value = val;
+				this.$store.state.nav.category.map((item, idx)=>{
+					if(item.ID == currentId){
 
-					//当前菜品添加属性num;
-					this.$store.state.nav.category.map(item=>{
-						if(item.ID == currentId){
-							item.num = val;
-							console.log(item)
+						item.num++;
+console.log('item.num',item.num)
+						event.target.previousElementSibling.value = item.num;
 
+						var flag = false;
+						this.$store.state.nav.cart.map((item2, idx2)=>{
+							if(item2.ID == item.ID){
+								item2.num++;
+								flag = true;
+							}
+						})
+
+						if(!flag){
+							this.$store.state.nav.cart.push(item);
 						}
-					});
-					
-				}else{
-					event.target.previousElementSibling.value = 1;
-					this.$store.state.nav.category.map(item=>{
-						if(item.ID == currentId){
-							item.num = 1;
-							console.log(item)
-						}
-					});
-				}
+					}
+				});
+				console.log(this.$store.state.nav.cart)
+				
+				localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
+				
 			},
 			sup: function(event){
-				var val = event.target.nextElementSibling.value;
-				if(val){
-					val--;
-					console.log('val', val);
-					if(val <= 0){
+				// 当前菜品ID；
+				var currentId = $(event.target).parent().attr('data-id');
 
-						event.target.nextElementSibling.value = '';
-						// $(event.target.nextElementSibling).hide();
-						$(event.target).hide().next().hide();
-						return;
+				this.$store.state.nav.category.map((item, idx)=>{
+					if(item.ID == currentId){
+						item.num--;
+
+						if(item.num <= 0 ){
+							var _idx = this.$store.state.nav.cart.indexOf(item);
+							this.$store.state.nav.cart.splice(_idx, 1);
+						}
+						event.target.nextElementSibling.value = item.num;
+						
 					}
-					event.target.nextElementSibling.value = val;
-				}
+				});
+				localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
+
 			},
+			
+
 			iconSearch: function(){
 				console.log(999)
+			},
+			showPic: function(event){
+				console.log('showPic');
+
+				//显示图片；
+				this.show = true;
+
+				//获取图片宽度；
+				var _width = $('.chen-details').width() * this.$store.state.nav.category.length;
+
+				//赋值；
+				this.num = $(event.target).parents('.chen-food').attr('idx');
+				
+				$('.chen-detailsList').width(_width);
+
+				//获取偏移量；
+				var left = $('.chen-details').width() + 2*$('.chen-prev').width();
+				
+				//默认left值；
+				var _left = left * (this.num);
+
+				//设置left值；图片显示相应的图片；
+				$('.chen-detailsList').css({left:-_left});
+			},
+			closePic: function(){
+				this.show = false;
+			},
+			prevPic: function(){
+				//显示上一张；
+				console.log('prevPic');
+
+				//获取偏移量；
+				var left = $('.chen-details').width() + 2*$('.chen-prev').width();
+
+				this.num--;
+
+				//this.num <=0 时，设置默认值0；
+				if(this.num <= 0){
+					this.num = 0;
+				};
+
+				//计算left值；
+				var _left = left * this.num;
+
+				//动画切换上一张；
+				$('.chen-detailsList').animate({left: -_left});
+			},
+			nextPic: function(){
+				//显示下一张图片；
+				console.log('nextPic');
+
+				//获取单位偏移量；
+				var left = $('.chen-details').width() + 2*$('.chen-prev').width();
+
+				//计算left值；
+				this.num++;
+
+				//this.num <=0 时，设置默认值0；
+				if(this.num >= this.$store.state.nav.category.length){
+					this.num = this.$store.state.nav.category.length;
+				};
+
+				var _left = left * this.num;
+
+				//动画切换下一张；
+				$('.chen-detailsList').animate({left: -_left});
+			},
+			chenAdd: function(){
+				console.log('chenAdd')
 			}
 		},
 		watch: {

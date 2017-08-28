@@ -12,6 +12,9 @@ import './assets/jquery-validation-1.15.0/dist/jquery.validate.js'
 import './assets/jquery-validation-1.15.0/dist/localization/messages_zh.js'
 import './assets/jquery-confirm/jquery-confirm.js'
 
+//icon-font;
+import './assets/icon-font/iconfont.css';
+
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
