@@ -1,0 +1,60 @@
+.details{
+    #headers{
+        height:1rem;
+        margin-bottom:0.13rem;
+        background:lightblue;
+        span{
+            font-size:0.4rem;
+            display: block;
+            width:100%;
+            text-align:center;
+            line-height:1rem;
+        }
+    }
+    .bodys{
+        background:#ccc;
+        p{
+            height:0.66rem;
+            display: flex;
+            justify-content: space-around;
+            line-height:0.66rem;
+            font-size:0.32rem;
+            .cooker{
+                width:50%;
+                margin-left:0.13rem;
+            }
+            .cooking{
+                display:flex;
+                width:50%;
+                justify-content: space-around;
+                input{
+                    padding:0.02rem;
+                }
+            }
+        }
+        
+    }
+    .footers{
+        position:fixed;
+        bottom:0;
+        background:lightblue;
+        width:100%;
+        height:1rem;
+        line-height:0.66rem;
+        display: flex;
+        justify-content: space-between;
+        font-size:0.4rem;
+        line-height:1rem;
+        padding-left:0.26rem;
+        .money{
+            vertical-align: middle;
+        }
+        .paid{
+            width:50%;
+            text-align: center;
+            background:#F7BA2A;
+            color:#fff;
+            border:0;
+        }
+    }
+}

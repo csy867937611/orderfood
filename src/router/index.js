@@ -7,6 +7,8 @@ import waiter from '../component/waiter/waiter.vue';
 import foodlist from '../component/foodlist/foodlist.vue';
 import clients from '../component/clients/clients.vue'
 import client from '../component/client/client.vue'
+import detail from '../component/waiter/details/detail.vue';
+
 
 Vue.use(VueRouter);
 
@@ -32,7 +34,9 @@ const router = new VueRouter({
 				{path: '/饮品', component: foodlist}
 			]
 		},
-		{path:'/waiter',component:waiter}
+		{path:'/waiter',component:waiter},
+		{path:'/detail',component:detail}
+
 	]
 })
 
