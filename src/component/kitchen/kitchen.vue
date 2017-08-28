@@ -6,19 +6,24 @@
 		<div class="kit-content">
 			<div class="block">
 				<span class="wrapper">
-				    <el-button :plain="true" :autofocus="true" class="blue" type="info" @click="info">进行中</el-button>
+   					<el-button type="warning" @click="center">进行中</el-button>
 				</span>
 				<span class="wrapper">
-				    <el-button :plain="true" class="green" type="success" @click="success">已完成</el-button>				    
+				    <el-button type="success" @click="over">已完成</el-button>		    
 				</span>
 			</div>
 			<div class="kit-contenter">
-				<div class="dingdan" v-for="(value,key) in this.$store.state.nav.category">
-					<p class="ppp">菜名： {{value.name}} 制作时间： {{value.time}} 分钟</p>
-					<button>上菜</button>
+				<!-- <div class="dingdan" v-for="(value,key) in this.$store.state.nav.category"> -->
+				<div class="dingdan">
+					1111
 				</div>
+				<!-- </div> -->
 				<div class="success">
-					222
+					<p class="ppp">菜名：满汉全席  制作时间：60分钟</p>
+					<p>
+						<el-button :plain="true" type="success" class="serve" @click="serving">上菜</el-button>
+					</p>
+					<br/>
 				</div>
 			</div>
 		</div>
@@ -42,14 +47,20 @@
 			}
 		},
 		methods: {
-			info: function(){
+			center: function(){
 				$('.dingdan').show();
 				$('.success').hide();
+				console.log('dingdan')
 			},
-			success: function(){
+			over: function(){
 				$('.success').show();
-				$('.info').hide();
+				$('.dingdan').hide();
+				console.log('success')
+			},
+			serving: function(){
+				console.log(555)
 			}
+
 		}
 	}
 </script>	

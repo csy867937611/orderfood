@@ -1,14 +1,17 @@
 <template>
-	<div class="jiedan">
+	<div class="jiedan-body">
 		<div class="jiedan-header">
 			<h1>小蚂蚁点餐系统</h1>
 		</div>
 
 		<div class="jiedan-content">
-			<div class="dingdan" v-for="(value,key) in this.$store.state.nav.category">
-				<p class="ppp">菜名： {{value.name}} 制作时间： {{value.time}} 分钟<button>接单</button></p>
+			
+				<p class="ppp">菜名：满汉全席  制作时间：60 分钟</p>
 				
-			</div>
+			    <p><el-button type="info" @click="jie">接单</el-button>
+			    <el-button type="warning" @click="footover">售馨</el-button></p>
+			    
+			
 		</div>
 
 		<div class="jiedan-footder">
@@ -20,6 +23,7 @@
 <script>
 	import $ from 'jquery';
 	import './jiedan.scss'
+
 	export default {
 		name: 'jiedan',
 		data: function(){
@@ -29,8 +33,16 @@
 			}
 		},
 		methods: {
-
+			jie: function(){
+				this.$store.dispatch('jie', 1)
+				console.log('component', this);
+			},
+			footover: function(){
+				console.log('over')
+			}
 		}
+
+
 		
 	}
 

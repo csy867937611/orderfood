@@ -26,21 +26,16 @@ h1{
 	margin-top: 0.05rem;
 	display: flex;
 	.wrapper{
-		flex: 1;
-		button{
-			width:100%;
-			height:100%;
-		}
-		
+		flex: 50%;
 	}
 }
 .kit-header{
 	position: realtive;
 
 }
-.info, .success{
+.dingdan, .success{
 	position: absolute;
-	top: 1.75rem;
+	top: 2.3rem;
 	left: 0;
 }
 
@@ -48,3 +43,12 @@ h1{
 	display: none;
 }
 
+.serve{
+	width:100%;
+	height:100%;
+}
+
+.kit-contenter{
+	width:100%;
+	height: 10rem;
+}
