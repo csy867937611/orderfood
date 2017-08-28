@@ -1,6 +1,8 @@
 import http from '../../utils/HttpClient';
 import Vue from 'vue';
 
+
+
 const state = {
 	data: [],
 	all: [],
@@ -12,6 +14,9 @@ const actions = {
  		console.log('actions')
  		store.commit('chendata', arg);
  		console.log(store)
+
+
+ 		
  	},
  	category: (store, arg)=>{
  		console.log('action', arg)

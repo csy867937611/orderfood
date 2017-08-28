@@ -13,13 +13,11 @@
 
   import spinner from './component/spinner/spinner.vue';
   import kitchen from './component/kitchen/kitchen.vue';
-  import jiedan from './component/jiedan/jiedan.vue';
+  import jiedan from './component/jiedan/jiedan';
   export default {
     name: "app",
     components: {
-      spinner,
-      kitchen,
-      jiedan
+      spinner
     }
   }
 
