@@ -33,11 +33,34 @@ exports.register = function (app){
 		sql.page('products',req.query,function(data) {
 			res.send(data)
 
+		})
+	})
 	//菜品模糊查询；
-	app.post('/keyword', urlencodedParser, function(request, response){
+	app.post('/keyword', urlencodedParser, function(request, response) {
 		console.log(request.body)
-		sql.keyword('products', request.body, function(data){
+		sql.keyword('products', request.body, function(data) {
 			response.send(data);
+		})
+	})
+	//菜品录入
+	app.post('/addProduct',urlencodedParser,function(req,res) {
+		console.log(req.body);
+		sql.addProduct('products',req.body,function(data) {
+			res.send(data);
+		});
+	});
+	//删除菜品
+	app.post('/removeProduct',urlencodedParser,function(req,res) {
+		console.log(req.body);
+		sql.removeProduct('products',req.body,function(data) {
+			res.send(data);
+		});
+	});
+	//更新菜品
+	app.post('/updateProduct',urlencodedParser,function(req,res) {
+		console.log(req.body);
+		sql.updateProduct('products',req.body,function(data) {
+			res.send(data);
 		})
 	})
 }
