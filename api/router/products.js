@@ -61,6 +61,13 @@ exports.register = function (app){
 		console.log(req.body);
 		sql.updateProduct('products',req.body,function(data) {
 			res.send(data);
-		})
-	})
+		});
+	});
+	app.get('/search',function(req,res) {
+		console.log('req.body',req.query)
+		sql.keyword('prodcuts',req.query,function(data){
+			res.send(data);
+		});
+	});
+
 }

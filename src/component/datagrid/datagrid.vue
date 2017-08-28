@@ -158,8 +158,12 @@
       
       },
       //更新菜品
-      update() {
-        console.log('更新成功')
+      update(evt) {
+        var self = this
+        //console.log('更新成功')
+        let index = $(evt.target).closest('tr').index();
+        //console.log(this.dataset[index])
+        this.$router.push({name:'update',params:{data:self.dataset[index]}})
       },
 
       handleSizeChange(val) {

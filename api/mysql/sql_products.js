@@ -131,11 +131,13 @@ module.exports = {
 	},
 	//更新菜品
 	updateProduct:function(table,data,callback) {
-		console.log('更新data',data)
-		var editData = data.editData
+		//console.log('更新data',data)
+		var editData = data
+		console.log('11111',editData)
+		data.table = 'products';
 		//所有数据数量
 		var total = 0;
-		var _condition = `select * from ${data.table}`;
+		var _condition = `select * from products`;
 		sql.query(_condition, function(err,res){
 			total = res.length;
 		});
