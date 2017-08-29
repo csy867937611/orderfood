@@ -1,7 +1,7 @@
 <template>
 	<div class="dk-header">
 		<ul>
-			<li><router-link to="/">点餐后台</router-link></li>
+			<li><router-link to="/">小蚂蚁点餐后台</router-link></li>
 		</ul>
 		<ul>
 			<li>
