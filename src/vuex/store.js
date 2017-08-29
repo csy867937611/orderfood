@@ -4,9 +4,10 @@ import waiter from '../component/waiter/waiter';
 import hot_nav from '../component/order/hot_nav/hot_nav';
 import nav from '../component/nav/nav.js';
 import detail from '../component/waiter/details/detail'
-
 import home from '../component/home/home.js';
 
+
+import home from '../component/home/home.js';
 
 
 Vue.use(Vuex)

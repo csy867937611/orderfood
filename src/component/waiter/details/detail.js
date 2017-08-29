@@ -30,7 +30,6 @@ const mutations = {
 						console.log(newobj);
 					}
 				}
-				
 			}
 		})
 		console.log(state.newarr)

@@ -179,7 +179,7 @@
                         required: true, message: '请输入菜品的ID', trigger: 'blur'
                     }],
                     name:[{
-                        required: true, message: '请输入活动名称', trigger: 'blur' 
+                        required: true, message: '请输入菜名', trigger: 'blur' 
                     }],
                     category:[{
                         required: true, message: '请选择分类',trigger: 'blur'

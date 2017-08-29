@@ -8,16 +8,20 @@
         <el-button slot="append" icon="search" @click="search"></el-button>
       </el-input>
     </div>
+    <div>
+        <el-button  class="toggle" type="primary" @click="toggle" size="small">{{text}}</el-button>
+    </div>
     <el-table class="table" :data="dataset" height="560" border style="width: 100%">
-      <el-table-column
+        <el-table-column v-for="(value,key) in dataset[0]" :prop="key" width="150" sortable :label="dictionary[lan][key] || key " :className="key"></el-table-column>
+      <!-- <el-table-column
         prop="ID"
-        label="ID"
+        :label="dictionary[lan].ID"
         sortable
         width="80">
       </el-table-column>
       <el-table-column
         prop="name"
-        label="name"
+        :label="dictionary[lan].name"
         sortable
         width="150">
       </el-table-column>
@@ -73,7 +77,7 @@
         prop="CreateTime"
         label="CreateTime"
         width="150">
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
         fixed="right"
         label="操作"
@@ -112,6 +116,9 @@
 		data(){
 			return {
         dataset: [],
+        dictionary: {},
+        text: 'English',
+        lan: 'cn',
         toolList: null,
         input:'',
         qty:0,
@@ -136,6 +143,16 @@
       click: function(evt){
         if(evt && evt.event){
             evt.event()
+        }
+      },
+
+      //中英文切换
+      toggle(){
+        this.text = this.text == '中文' ? 'English' : '中文';
+        if(this.text == '中文') {
+            this.lan = 'en';
+        }else{
+            this.lan = 'cn';
         }
       },
 
@@ -194,6 +211,10 @@
       }
     },
     created(){
+        let self = this
+      $.get(baseurl + 'src/assets/common/dictionary.json',function(res){
+        self.dictionary = res
+      })
       if(this.api){
           //console.log(this.api)
           $.get(this.api,(res)=>{
