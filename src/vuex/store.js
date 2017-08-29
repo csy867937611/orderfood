@@ -7,12 +7,8 @@ import nav from '../component/nav/nav.js';
 import kitchen from '../component/kitchen/kitchen.js';
 import jiedan from '../component/jiedan/jiedan.js';
 
-
 import home from '../component/home/home.js';
 import detail from '../component/waiter/details/detail'
-
-
-
 
 
 Vue.use(Vuex)

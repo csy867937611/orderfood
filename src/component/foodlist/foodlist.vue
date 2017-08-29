@@ -4,14 +4,14 @@
 	<div class = "chen-show" v-show = "show">
 		<div class="chen-showPic" @touchmove = "touchmove">
 			<div class="chen-close" @click = "closePic">&times;</div>
-			<div class="chen-prev" @click = "prevPic"><i class="iconfont icon-prev"></i></div>
-			<div class="chen-next" @click = "nextPic"><i class="iconfont icon-next"></i></div>
+			<div class="chen-prev" @click = "prevPic"><i class="iconfont icon-prev1"></i></div>
+			<div class="chen-next" @click = "nextPic"><i class="iconfont icon-next1"></i></div>
 			<div class="chen-detailsList">
 				<div class="chen-details" v-for = "(value, key) in this.$store.state.nav.category" :key= "value.ID" :data-id = "value.ID">
 					<img :src="'./src/assets/imgs/' + value.imgurl" alt="" />
 					<span>{{value.name}}</span>
 					<span>{{value.nowPrice}}元/份</span>
-					<span class = "chen-add" @click = "chenAdd">点</span>
+					<span class = "chen-add" @click = "chenAdd"><i class="iconfont icon-plus"></i></span>
 				</div>
 			</div>
 		</div>
@@ -31,9 +31,9 @@
 					<p class = "chen-time">工时：{{value.time}}分钟</p>
 				</div>
 				<div class="chen-car" :data-id = "value.ID" >
-					<p class="chen-sub" @click = "sup" v-show = "value.num > 0">减</p>
+					<p class="chen-sub" @click = "sup" v-show = "value.num > 0"><i class="iconfont icon-reduce1"></i></p>
 					<input type="number" class="chen-num" v-show = "value.num > 0" :value = "value.num" />
-					<p class="chen-add" @click = "add">点</p>
+					<p class="chen-add" @click = "add"><i class="iconfont icon-add1"></i></p>
 				</div>
 
 			</div>
@@ -66,7 +66,7 @@
 				cart = [];
 			};
 			this.$store.state.nav.cart = cart;
-		
+
 		},
 		methods: {
 			touchmove: function(e){
@@ -76,28 +76,15 @@
 			},
 			add: function(event){
 
-				$(event.target).siblings().show();
-				var val = event.target.previousElementSibling.value;
-				if(val){
-					console.log('val', val);
-					val++;
-					event.target.previousElementSibling.value = val;
-					
-				}else{
-					event.target.previousElementSibling.value = 1;
-				}
-				this.count++;
-				this.show = true;
-
 				// 当前菜品ID；
-				var currentId = $(event.target).parent().attr('data-id');
+				var currentId = $(event.target).parents("div").attr('data-id');
 
 				this.$store.state.nav.category.map((item, idx)=>{
 					if(item.ID == currentId){
 
 						item.num++;
 						
-						event.target.previousElementSibling.value = item.num;
+						
 
 						var idx = this.$store.state.nav.cart.indexOf(item);
 						console.log(idx);
@@ -118,7 +105,7 @@
 			},
 			sup: function(event){
 				// 当前菜品ID；
-				var currentId = $(event.target).parent().attr('data-id');
+				var currentId = $(event.target).parents("div").attr('data-id');
 
 				this.$store.state.nav.category.map((item, idx)=>{
 					if(item.ID == currentId){
@@ -128,7 +115,6 @@
 							var _idx = this.$store.state.nav.cart.indexOf(item);
 							this.$store.state.nav.cart.splice(_idx, 1);
 						}
-						event.target.nextElementSibling.value = item.num;
 					}
 
 					event.target.nextElementSibling.value = val;
@@ -139,7 +125,6 @@
 				localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
 			},
 			
-
 			iconSearch: function(){
 				console.log(999)
 			},
@@ -213,7 +198,7 @@
 			chenAdd: function(){
 				console.log('chenAdd');
 				// 当前菜品ID；
-				var currentId = $(event.target).parent().attr('data-id');
+				var currentId = $(event.target).parents('div').attr('data-id');
 
 				this.$store.state.nav.category.map((item, idx)=>{
 					if(item.ID == currentId){

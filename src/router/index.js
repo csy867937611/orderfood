@@ -13,6 +13,7 @@ import clients from '../component/clients/clients.vue'
 import client from '../component/client/client.vue'
 import detail from '../component/waiter/details/detail.vue';
 import update from '../component/update/update.vue'
+import paid from '../component/paid/paid.vue';
 
 
 Vue.use(VueRouter);
@@ -42,14 +43,10 @@ const router = new VueRouter({
 			]
 		},
 		{path:'/waiter',component:waiter},
-
-
+		{path:'/detail',component:detail},
+		{path:'/paid',component:paid},
 		{path:'/kitchen',component:kitchen},
-		{path:'/jiedan',component:jiedan},
-
-
-		{path:'/detail',component:detail}
-
+		{path:'/jiedan',component:jiedan}
 
 	]
 })
