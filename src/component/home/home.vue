@@ -1,8 +1,8 @@
 <template>
 	<div class = "chen-body">
 		<div class="chen-header">
-	      <h1>小蚂蚁点餐系统</h1>
-	      <div class = "chen-bell" @click = "callWaiter"><i class="iconfont icon-bell"></i></div>
+	      <h1>小蚂蚁餐厅</h1>
+	      <div class = "chen-bell" @click = "callWaiter"><i class="iconfont icon-food"></i></div>
 	    </div>
 	    <div class="chen-content">
 	   		<router-view></router-view>

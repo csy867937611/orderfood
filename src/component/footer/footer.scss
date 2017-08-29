@@ -1,7 +1,8 @@
 	.chen-footer{
 		width: 100%;
 		height: 1.2rem;
-		background: #00aaff;
+		background: #5a383b;
+		color: #fff;
 		margin: 0 auto;
 		text-align: center;
 		font-size: 0.4rem;
@@ -28,4 +29,19 @@
 				color: red;
 			}
 		}
+		.color{
+			color: yellow;
+		}
+	}
+	.chen-qty{
+		width: 0.4rem;
+		height: 0.4rem;
+		border-radius: 50%;
+		font-size: 0.14rem;
+		background: red;
+		color: #fff;
+		position: fixed;
+		left: 40%;
+		bottom: 6%;
+		text-align: center;
 	}
