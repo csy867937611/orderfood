@@ -21,13 +21,10 @@ export default new Vuex.Store({
     modules: {
         hot_nav,
         nav,
-
-
         kitchen,
         jiedan,
         waiter,
         home,
-    
         detail
     }
 })

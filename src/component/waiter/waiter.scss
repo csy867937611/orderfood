@@ -5,9 +5,10 @@
 	.header{
 		width:100%;
 		overflow: hidden;
+		color:#fff;
 		.headero{
 			height:1.33rem;
-			background:#D3DCE6;
+			background:#5a383b;
 			span{
 				font-size: 0.53rem;
 				line-height: 1.33rem;
@@ -61,12 +62,13 @@
 		height:1rem;
 		width:100%;
 		font-size: 0.33rem;
-		background: #D3DCE6;
+		background: #5a383b;
 		position:fixed;
 		bottom: 0;
 		line-height: 1rem;
 		display: flex;
 		justify-content: space-around;
+		color:#fff;
 		span{
 			display: inline-block;
 		}
