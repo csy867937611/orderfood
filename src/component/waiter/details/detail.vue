@@ -29,7 +29,7 @@
 				<p>
 					<span>应付</span>
 					<span>:</span>
-					<span>0.00</span>
+					<span>{{price}}</span>
 				</p>
 			</div>
 			<input type="button" class="paid" value="买单" @click="showDetail">
@@ -51,23 +51,29 @@
 		          schedule:'进行中...',
 		          require: <el-button type="warning">催单</el-button>
 		        }],
-		        page:''
+		        page:'',
+		        price:''
 		      }
 		    },
 		methods:{
 			showDetail:function(){
 				console.log(this);
 				this.$store.dispatch('showDetail');
+			},
+			reminder:function(){
+				console.log(666);
 			}
 			
 		},
 		created(){
 			this.page = this.$route.query.obj.id;
-			console.log(this.$store.state.detail.arr);
-			var messages = [];
-			for(var i = 0;i < this.$store.state.detail.arr.length;i++){
-				
+			var number = 0;
+			for(var i = 0 ; i < this.$store.state.detail.arr.length; i++){
+				this.$store.state.detail.arr[i].require = <el-button type="warning">催单</el-button>;
+				number += this.$store.state.detail.arr[i].price
 			}
+			this.price = number;
+			this.tableData = this.tableData.concat(this.$store.state.detail.arr)
 		}
 	}
 </script>
