@@ -5,7 +5,8 @@ const state = {
 	data: [], 
 	all: [],
 	category: [],
-	className: []
+	className: [],
+	cart: []
 };
 
 const actions = {
@@ -26,13 +27,29 @@ const actions = {
 const mutations = {
 	//查找全部菜品；
 	chendata: (data, arg)=>{
-	
+
+		//获取localstorage;
+		var currentCart = localStorage.cart;
+		if(currentCart){
+			currentCart = JSON.parse(currentCart);
+		} else {
+			currentCart = [];
+		};
+
 		http.post('query').then(res=>{
 
 			//去重；
 			var arr =[];
 			res.data.map((item, idx)=>{
 				arr.push(item.category);
+				item.num = 0;
+				currentCart.map((item2, idx2)=>{
+					
+					if(item2.ID == item.ID){
+						item.num = item2.num;
+					}
+				})
+
 			});
 			var arr2 = arr.filter((item,idx, self)=>{
 				return self.indexOf(item) == idx;

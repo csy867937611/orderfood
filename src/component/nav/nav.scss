@@ -6,26 +6,33 @@ a{
 	text-decoration: none;
 	color: #000;
 }
-.chen-list{
-	width: 1.5rem;
+.chen-container{
+	width: 100%;
 	height: 100%;
-	background: #e5e5e5;
 	display: flex;
-	flex-direction: column;
-	justify-content: space-around;	
-	li{
-		flex: 1;
-		font-size: 0.36rem;
-		text-align: center;
-		box-sizing: border-box;
-		border-bottom: 0.01rem solid #eee;
-		span{
-			display: block;
-			height: 1.6rem;
-			line-height: 1.6rem;
+	flex-direction: row;
+
+	.chen-list{
+		width: 1.5rem;
+		height: 100%;
+		background: #e5e5e5;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;	
+		li{
+			flex: 1;
+			font-size: 0.36rem;
+			text-align: center;
+			box-sizing: border-box;
+			border-bottom: 0.01rem solid #eee;
+			span{
+				display: block;
+				height: 1.6rem;
+				line-height: 1.6rem;
+			}
 		}
-	}
-	.chen-active{
-		background: green;
+		.chen-active{
+			background: green;
+		}
 	}
 }
