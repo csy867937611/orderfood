@@ -98,6 +98,9 @@
 		top: 0;
 		left: 0;
 		z-index: 99;
+		input{
+			border: 1px solid #ddd;
+		}
 	}
 	.chen-foodlist{
 		width: 100%;
@@ -108,7 +111,7 @@
 			width: 100%;
 			box-sizing: border-box;
 			padding: 0.1rem;
-			border-bottom: 0.01rem solid blue;
+			border-bottom: 0.01rem solid #ddd;
 			height: 2.0rem;
 			position: relative;
 			.chen-img{
@@ -131,6 +134,7 @@
 					font-size: 0.32rem;
 					margin-bottom: 0.1rem;
 					overflow: hidden;
+					white-space: no-wrap;
 				}
 				.chen-price{
 					font-size: 0.30rem;

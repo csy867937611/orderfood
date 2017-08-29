@@ -58,7 +58,7 @@ const mutations = {
 			state.data = arr2;
 			state.category = res.data;
 			state.all = res.data;
-			console.log(state.category)
+		
 
 		})
 	},
