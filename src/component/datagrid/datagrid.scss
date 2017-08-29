@@ -15,6 +15,16 @@
 	position:fixed;
 	top:34px;
 	left:250px;
-	right:300px;
+	right:400px;
 	z-index:999;
+}
+.toggle{
+	position:fixed;
+	top:53px;
+	right:200px;
+	z-index:999;
+	background: #1ab394;
+}
+.toggle:hover,.toggle:active,.primary,.toggle:focus{
+	background: #1ab394;
 }
