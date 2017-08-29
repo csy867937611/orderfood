@@ -9,16 +9,16 @@
 		    stripe
 		    style="width: 100%">
 		    <el-table-column
-		      prop="date"
+		      prop="name"
 		      label="菜名"
 		      width="180">
 		    </el-table-column>
 		    <el-table-column
-		      prop="name"
+		      prop="schedule"
 		      label="进度">
 		    </el-table-column>
 		    <el-table-column
-		      prop="address"
+		      prop="require"
 		      label="要求">
 		    </el-table-column>
 		  </el-table>
@@ -47,23 +47,27 @@
 		data(){
 		      return {
 		        tableData: [{
-		          date: '豆角小炒肉',
-		          name:<el-button type="success">查看</el-button>,
-		          address: <el-button type="warning">催单</el-button>
+		          name: '豆角小炒肉',
+		          schedule:'进行中...',
+		          require: <el-button type="warning">催单</el-button>
 		        }],
 		        page:''
 		      }
 		    },
 		methods:{
-			showDetail:()=>{
-				console.log(666);
-				var message = 777;
-				var socket = io.connect('ws://localhost:1703');
-				socket.emit('server',message);
+			showDetail:function(){
+				console.log(this);
+				this.$store.dispatch('showDetail');
 			}
+			
 		},
 		created(){
 			this.page = this.$route.query.obj.id;
+			console.log(this.$store.state.detail.arr);
+			var messages = [];
+			for(var i = 0;i < this.$store.state.detail.arr.length;i++){
+				
+			}
 		}
 	}
 </script>

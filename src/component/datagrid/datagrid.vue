@@ -3,7 +3,12 @@
     <div class="dk-toolbar dk-grid-toolbar" :id="toolbar_id" v-if="toolbar">
       <a href="javascript:" class="btn btn-primary btn-sm" v-if="toolList" v-for="(value,key) in toolList" @click="click(value)">{{value.text ? value.text : key}}</a>
     </div>
-    <el-table :data="dataset" height="590" border style="width: 100%">
+    <div style="margin-top: 15px;" class="search">
+      <el-input placeholder="请输入ID/菜名/菜系/描述" v-model="input">
+        <el-button slot="append" icon="search" @click="search"></el-button>
+      </el-input>
+    </div>
+    <el-table class="table" :data="dataset" height="560" border style="width: 100%">
       <el-table-column
         prop="ID"
         label="ID"
@@ -57,7 +62,7 @@
       <el-table-column
         prop="imgurl"
         label="imgurl"
-        width="150">
+        width="170">
       </el-table-column>
       <el-table-column
         prop="remain"
@@ -68,6 +73,15 @@
         prop="CreateTime"
         label="CreateTime"
         width="150">
+      </el-table-column>
+      <el-table-column
+        fixed="right"
+        label="操作"
+        width="100">
+        <template scope="scope">
+          <el-button @click="update" type="text" size="small">修改</el-button>
+          <el-button @click="remove" type="text" size="small">删除</el-button>
+        </template>
       </el-table-column>
     </el-table>
     <div class="block">
@@ -85,8 +99,9 @@
 </template>
 
 <script type="text/javascript">
+  import baseurl from '../../assets/common/common.js'
 	import './datagrid.scss'
-    import $ from 'jquery'
+  import $ from 'jquery'
 
 	export default {
 		name: 'datagrid',
@@ -98,6 +113,7 @@
 			return {
         dataset: [],
         toolList: null,
+        input:'',
         qty:0,
         total:0,
         page:0,
@@ -116,10 +132,55 @@
       }
 		},
     methods: {
+      //新增
       click: function(evt){
         if(evt && evt.event){
             evt.event()
         }
+      },
+
+      //搜索菜名
+      search() {
+        let self = this
+        $.get(baseurl + 'search',{keyword:self.input},function(res) {
+            console.log(res)
+            self.dataset = res.data
+            self.total   = res.data.length
+        })
+      }, 
+
+      //删除菜品
+      remove(evt) {
+        console.log(baseurl)
+        var self = this;
+        this.$confirm('此操作将永久删除该菜品, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          let currentID = $(evt.target).parents('tr').children().eq(0).text()
+          $.post(baseurl + 'removeProduct', {id:currentID,qty:self.qty,page:self.page},function(res){
+            self.dataset = res.data
+            if(res.status) {
+              self.$message({
+              type: 'success',
+              message: '删除成功!'
+              });
+            }
+          })
+        }).catch(() => {
+          this.$message({type: 'info',message: '已取消删除'});          
+        });
+
+      
+      },
+      //更新菜品
+      update(evt) {
+        var self = this
+        //console.log('更新成功')
+        let index = $(evt.target).closest('tr').index();
+        //console.log(this.dataset[index])
+        this.$router.push({name:'update',params:{data:self.dataset[index]}})
       },
 
       handleSizeChange(val) {
