@@ -36,6 +36,7 @@
 			jie: function(){
 				this.$store.dispatch('jie', 1)
 				console.log('component', this);
+				console.log(this.$store.state.nav.cart)
 			},
 			footover: function(){
 				console.log('over')
