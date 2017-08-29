@@ -10,7 +10,7 @@
 		font-size: 0.4rem;
 		box-sizing:border-box;
 		margin: 0;
-		padding: 0;
+		padding: 0 0 0 0.3rem;
 		background: pink;
 	}
 	.chen-foodlist{
@@ -20,9 +20,9 @@
 		.chen-food{
 			width: 100%;
 			box-sizing: border-box;
-			padding: 0.1rem;
-			border-bottom: 0.01rem solid blue;
-			height: 2.0rem;
+			padding: 0.2rem;
+			border-bottom: 0.01rem solid #ddd;
+			height: 2.2rem;
 			position: relative;
 			.chen-img{
 				width: 40%;
@@ -109,7 +109,7 @@
 				.chen-sub{
 					// display: none;
 					color: #000;
-					background: #fff;
+					background: #ff4343;
 					right: 1.6rem;
 				}
 			}
@@ -172,5 +172,16 @@
 				letter-spacing: 0.1rem;
 			}
 		}
+	}
+	.chen-qty{
+		width: 0.4rem;
+		height: 0.4rem;
+		border-radius: 50%;
+		background: red;
+		color: #fff;
+		position: fixed;
+		left: 40%;
+		bottom: 6%;
+		text-align: center;
 	}
 }

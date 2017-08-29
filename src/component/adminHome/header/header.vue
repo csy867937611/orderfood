@@ -30,14 +30,6 @@
 	// import $ from 'jquery'
 
 	export default {
-		// methods:{
-		// 	nav(event){
-		// 		let self = $(event.target);
-		// 		if(!self.is('.dk-nav-item')){
-		// 			self = self.closest('.dk-nav-item');
-		// 		}
-		// 		self.toggleClass('active');
-		// 	}
-		// }
+		
 	}
 </script>

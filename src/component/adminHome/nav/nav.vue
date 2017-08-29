@@ -14,7 +14,6 @@
 				</a>
 				<ul class="dk-sub-nav">
 					<li><router-link to="/clients">菜品浏览</router-link></li>
-					<li><router-link to="/">菜品查询</router-link></li>
 				</ul>
 			</li>
 			<li class="dk-nav-item" @click="toggleNavItem">

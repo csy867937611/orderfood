@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import order from '../component/order/order.vue'
 import adminHome from '../component/adminHome/home.vue'
+import kitchen from '../component/kitchen/kitchen.vue'
+import jiedan from '../component/jiedan/jiedan.vue'
 import home from '../component/home/home.vue';
 import waiter from '../component/waiter/waiter.vue';
 import foodlist from '../component/foodlist/foodlist.vue';
@@ -42,7 +44,10 @@ const router = new VueRouter({
 		},
 		{path:'/waiter',component:waiter},
 		{path:'/detail',component:detail},
-		{path:'/paid',component:paid}
+		{path:'/paid',component:paid},
+		{path:'/kitchen',component:kitchen},
+		{path:'/jiedan',component:jiedan}
+
 	]
 })
 

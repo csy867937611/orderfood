@@ -13,6 +13,7 @@ exports.register = function (app){
 		sql.query("products", request.query, function(data){
 			//返回数据到页面；
 			response.send({status: true,data: data});
+			console.log(6666)
 		})
 	});
 

@@ -26,9 +26,10 @@
 				<span class = "total">{{total}}元</span>
 			</div>
 			<div class = "chen-pay">
-				<span>结算</span>
+				<span @click = "order">下单</span>
 			</div>
 		</div>
+		
 	</div>
 </template>
 
@@ -59,7 +60,7 @@
 						localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
 					}
 				});
-				this.$emit('created');
+				
 			},
 			sup: function(event){
 				console.log("sup");
@@ -83,6 +84,9 @@
 						localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
 					}
 				});
+			},
+			order: function(){
+				console.log(123)
 			}
 		},
 		created: function(){
@@ -98,7 +102,8 @@
 			this.$store.state.nav.cart.map((item, idx)=>{
 				price += item.nowPrice * item.num;
 			});
-			this.total = price
+			this.total = price;
+
 		}
 	}
 </script>
