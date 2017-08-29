@@ -168,11 +168,11 @@
                     label: '饮品'
                 }],
                 option:[{
-                    value: 'true',
-                    label: 'true'
+                    value: 'Y',
+                    label: 'Y'
                     },{
-                    value: 'false',
-                    label: 'false'
+                    value: 'N',
+                    label: 'N'
                 }],
                 rules:{
                     ID:[{
