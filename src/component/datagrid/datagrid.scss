@@ -7,15 +7,15 @@
 	}
 	
 }
-.block{
+.cyq-block{
 	width:600px;
 	margin:20px auto;
 }
 .search{
 	position:fixed;
-	top:34px;
+	top:37px;
 	left:250px;
-	right:400px;
+	min-width: 400px;
 	z-index:999;
 }
 .toggle{

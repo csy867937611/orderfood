@@ -10,62 +10,29 @@ const state = {
 };
 
 const actions = {
- 	chendata: (store, arg)=>{
- 		console.log('actions')
- 		store.commit('chendata', arg);
+ 	center: (store, n)=>{
+ 		// console.log('actions')
+ 		store.commit('center', n);
  		console.log(store)
-
-
- 		
- 	},
- 	category: (store, arg)=>{
- 		console.log('action', arg)
- 		store.commit('category', arg);
  	}
 };
 
 const mutations = {
-	//查找全部菜品；
-	chendata: (data, arg)=>{
-	
-		http.post('query').then(res=>{
+	center: (data) => {
+		console.log(1111111111111)
+		
 
-			//去重；
-			var arr =[];
-			res.data.map((item, idx)=>{
-				arr.push(item.category);
-			});
-			var arr2 = arr.filter((item,idx, self)=>{
-				return self.indexOf(item) == idx;
-			})
-			console.log("arr",arr2)
-			state.data = arr2;
-			state.category = res.data;
-			state.all = res.data;
-			console.log(state.category)
-
-		})
-	},
-	//查找分类；
-	category: (data, arg)=>{
-		console.log('mutations', arg);
-
-		//循环找到同类的菜品；
-		var same = [] ;
-		state.all.map((item, idx)=>{
-			if(item.category == arg.category){
-				same.push(item)
-			}
+		var socket = io.connect('ws://10.3.134.54:1703');
+		socket.on('chilken', function(message){
+			
+		console.log(message)
+			
 		});
-		state.category = same;
-		console.log(state.category)
-
-		// http.post('getCategory', arg).then((res)=>{
-		// 	console.log(res);
-		// 	state.category = res;
-		// })
 	}
+	
 };
+
+
 
 export default {
 	state,

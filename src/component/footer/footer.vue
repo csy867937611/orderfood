@@ -25,13 +25,34 @@
 	import './footer.scss';
 	import router from '../../router';
 	import $ from 'jquery';
+
 	export default {
 		methods: {
 			chenCallWaiter: function(){
-				console.log('chenCallWaiter', router)
-				// router.push('/callWaiter');
 				this.$store.state.home.show = true;
-				console.log(this.$store.state.home.show)
+
+				var socket = io.connect('ws://10.3.134.54:1703');
+				var data = {table: 1}
+				socket.emit('server', data);
+
+				socket.on('ser', function (data) {
+			        console.log(data);
+			        // socket.emit('server', { my: 123 });
+			    });
+			    socket.on('offer', data=>{
+			    	console.log(data)
+			    	if(data.status){
+
+				    	this.$store.state.home.show = false;
+				    	this.$message({
+					        message: '马上过来为您服务，请稍等哦！',
+					        type: 'success',
+					        onClose: ()=>{
+					        	
+					        }
+				        })
+			    	}
+			    })
 			},
 			chenCart: function(){
 				console.log('chenCart');

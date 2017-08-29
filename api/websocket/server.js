@@ -8,6 +8,7 @@ var path = require('path');
 app.use(express.static(path.join(__dirname, '../')));
 
 io.on('connection',function(client){
+
 	client.on('server',function(message){
 		// var newMess = JSON.parse(message)
 		/*message = encodeURIComponent(message)*/
@@ -26,6 +27,7 @@ io.on('connection',function(client){
 		console.log(schedule);
 		io.emit('kitchen',schedule);
 	})
+
 })
 
 http.listen(1703);
