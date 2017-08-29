@@ -10,6 +10,7 @@ import cart from '../component/cart/cart.vue';
 import clients from '../component/clients/clients.vue'
 import client from '../component/client/client.vue'
 import detail from '../component/waiter/details/detail.vue';
+import update from '../component/update/update.vue'
 
 
 Vue.use(VueRouter);
@@ -19,7 +20,8 @@ const router = new VueRouter({
 		{path:'/',component:order},
 		{path:'/adminHome', component:adminHome, children:[
 			{path:'/clients', name:'clients', component:clients},
-			{path:'/client', name:'client', component:client}
+			{path:'/client', name:'client', component:client},
+			{path: '/update', name: 'update', component:update}
 		]},
 		//{path: '/home', component: foodlist},设置默认级路由并显示；
 

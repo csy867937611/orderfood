@@ -2,11 +2,21 @@
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
+	position: relative;
+	h3{
+		height: 8%;
+		// width: 50%;
+		line-height: 260%;
+		font-size: 0.4rem;
+		box-sizing:border-box;
+		margin: 0;
+		padding: 0;
+		background: pink;
+	}
 	.chen-foodlist{
 		width: 100%;
-		height: 100%;
-		overflow: auto;
-		margin-top: 0.68rem;
+		height: 82%;
+		overflow-X: hidden;
 		.chen-food{
 			width: 100%;
 			box-sizing: border-box;
@@ -29,7 +39,8 @@
 				box-sizing: border-box;
 				padding: 0.2rem ;
 				height: 100%;
-				// width: 60%;
+				position: relative;
+				width: 60%;
 				.chen-name{
 					font-size: 0.32rem;
 					margin-bottom: 0.1rem;
@@ -44,6 +55,18 @@
 				.chen-time{
 					font-size: 0.28rem;
 					color: #aaa;
+				}
+				.chen-sum{
+					display: block;
+					width: 50%;
+					height:0.4rem;
+					line-height: 0.4rem;
+					text-align: center;
+					position: absolute;
+					bottom: 0.1rem;
+					right: 0;
+					font-size: 0.30rem;
+					color: red;
 				}
 			}
 			.chen-car{
@@ -89,6 +112,64 @@
 					background: #fff;
 					right: 1.6rem;
 				}
+			}
+		}
+	}
+	.chen-account{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 10%;
+		background: pink;
+		.chen-total{
+			width: 50%;
+			height: 100%;
+			float: left;
+			position: relative;
+			.sum{
+				display: block;
+				position: absolute;
+				top: 20%;
+				left: 0;
+				width: 50%;
+				height: 60%;
+				line-height: 180%;
+				font-size: 0.4rem;
+				text-align: right;
+			}
+			.total{
+				display: block;
+				position: absolute;
+				top: 20%;
+				right: 0;
+				width: 40%;
+				height: 60%;
+				line-height: 180%;
+				font-size: 0.4rem;
+				text-align: left;
+				color: red;
+			}
+		}
+		.chen-pay{
+			width: 50%;
+			height: 100%;
+			float: left;
+			position: relative;
+			span{
+				display: block;
+				position: absolute;
+				top: 20%;
+				left: 25%;
+				width: 50%;
+				height: 60%;
+				border-radius: 0.1rem;
+				line-height: 180%;
+				font-size: 0.4rem;
+				text-align: center;
+				background: #5c5c5c;
+				color: #fff;
+				letter-spacing: 0.1rem;
 			}
 		}
 	}
