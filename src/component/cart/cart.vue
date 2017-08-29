@@ -13,10 +13,10 @@
 					<p class = "chen-time">工时：{{value.time}}分钟</p>
 					<span class = "chen-sum">小计：{{value.nowPrice*value.num}}元</span>
 				</div>
-				<div class="chen-car" :data-id = "value.ID">
-					<p class="chen-sub" @click = "sup" >减</p>
-					<input type="number" class="chen-num" :value= "value.num" />
-					<p class="chen-add" @click = "add">加</p>
+				<div class="chen-car" :data-id = "value.ID" >
+					<p class="chen-sub" @click = "sup" v-show = "value.num > 0"><i class="iconfont icon-reduce1"></i></p>
+					<input type="number" class="chen-num" v-show = "value.num > 0" :value = "value.num" />
+					<p class="chen-add" @click = "add"><i class="iconfont icon-add1"></i></p>
 				</div>
 			</div>
 		</div>
@@ -35,6 +35,7 @@
 
 <script>
 	import './cart.scss';
+
 	export default {
 		data: function(){
 			return {
@@ -46,7 +47,7 @@
 			add: function(event){
 				console.log("add");
 				// 当前菜品ID；
-				var currentId = $(event.target).parent().attr('data-id');
+				var currentId = $(event.target).parents('div').attr('data-id');
 
 				this.$store.state.nav.cart.map((item, idx)=>{
 					if(item.ID == currentId){
@@ -54,7 +55,7 @@
 						this.total += item.nowPrice;
 
 						item.num++;
-						event.target.previousElementSibling.value = item.num;
+						// event.target.previousElementSibling.value = item.num;
 
 						console.log('item.num',item.num)                                                             
 						localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
@@ -65,7 +66,7 @@
 			sup: function(event){
 				console.log("sup");
 				// 当前菜品ID；
-				var currentId = $(event.target).parent().attr('data-id');
+				var currentId = $(event.target).parents('div').attr('data-id');
 
 				this.$store.state.nav.cart.map((item, idx)=>{
 					if(item.ID == currentId){
@@ -78,15 +79,24 @@
 							var _idx = this.$store.state.nav.cart.indexOf(item);
 							this.$store.state.nav.cart.splice(_idx, 1);
 						}
-						event.target.nextElementSibling.value = item.num;
+						// event.target.nextElementSibling.value = item.num;
 
 						console.log('item.num',item.num)                                                             
 						localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
+						console.log(this.$store.state.nav.cart.length, localStorage.cart.length );
 					}
 				});
 			},
 			order: function(){
 				console.log(123)
+				var socket = io.connect('ws://10.3.134.54:1703');
+				var data = this.$store.state.nav.cart;
+				console.log(data)
+				socket.emit('order', encodeURI(JSON.stringify(data)));
+			    socket.on('clientOrder', function (data) {
+			        console.log(JSON.parse(decodeURI(data)));
+			        // socket.emit('server', { my: 123 });
+			    });
 			}
 		},
 		created: function(){

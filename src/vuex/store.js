@@ -7,9 +7,6 @@ import detail from '../component/waiter/details/detail'
 import home from '../component/home/home.js';
 
 
-import home from '../component/home/home.js';
-
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
