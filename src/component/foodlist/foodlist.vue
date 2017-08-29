@@ -59,7 +59,7 @@
 				cart = [];
 			};
 			this.$store.state.nav.cart = cart;
-		
+
 		},
 		methods: {
 			touchmove: function(e){
@@ -107,7 +107,6 @@
 				localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
 			},
 			
-
 			iconSearch: function(){
 				console.log(999)
 			},
