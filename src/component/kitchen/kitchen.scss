@@ -1,0 +1,54 @@
+html,body{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+body,h1{
+	margin: 0;
+	padding: 0;
+}
+h1{
+	font-size: 0.4rem;
+	height: 100%;
+	line-height: 1rem;
+}
+.kit-header{
+	  width: 100%;
+	  height: 1rem;
+	  background: #ccc;
+	  margin: 0 auto;
+	  text-align: center;
+}
+.block{
+	width: 100%;
+	height: 0.68rem;
+	margin-top: 0.05rem;
+	display: flex;
+	.wrapper{
+		flex: 50%;
+	}
+}
+.kit-header{
+	position: realtive;
+
+}
+.dingdan, .success{
+	position: absolute;
+	top: 2.3rem;
+	left: 0;
+}
+
+.success{
+	display: none;
+}
+
+.serve{
+	width:100%;
+	height:100%;
+}
+
+.kit-contenter{
+	width:100%;
+	height: 10rem;
+}

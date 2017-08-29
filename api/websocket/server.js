@@ -8,9 +8,13 @@ var path = require('path');
 app.use(express.static(path.join(__dirname, '../')));
 
 io.on('connection',function(client){
-	client.on('server',function(message){console.log(decodeURI(message))
+
+	client.on('server',function(message){
 		// var newMess = JSON.parse(message)
-		io.emit('ser',decodeURI(message));
+		message = encodeURIComponent(message)
+		io.emit('ser',message);
+		console.log(message);
+
 	})
 })
 

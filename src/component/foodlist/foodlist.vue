@@ -1,4 +1,5 @@
 <template>
+
 <div class = "chen-main">
 	<div class = "chen-show" v-show = "show">
 		<div class="chen-showPic" @touchmove = "touchmove">
@@ -34,6 +35,7 @@
 					<input type="number" class="chen-num" v-show = "value.num > 0" :value = "value.num" />
 					<p class="chen-add" @click = "add"><i class="iconfont icon-add1"></i></p>
 				</div>
+
 			</div>
 		</div>
 	</div>
@@ -46,9 +48,14 @@
 		data: function(){
 			return {
 				show: false,
+
+				count: 0,
+
 				keyword: '',
+
 				arr: [],
 				num: 0
+
 			}
 		},
 		mounted: function(){
@@ -68,7 +75,7 @@
 			  
 			},
 			add: function(event){
-				console.log(8888)
+
 				// 当前菜品ID；
 				var currentId = $(event.target).parents("div").attr('data-id');
 
@@ -88,7 +95,13 @@
 						console.log('item.num',item.num)                                                             
 						localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
 					}
-				});	
+
+				});
+				console.log(this.$store.state.nav.cart);
+				
+				localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
+				
+
 			},
 			sup: function(event){
 				// 当前菜品ID；
@@ -103,7 +116,12 @@
 							this.$store.state.nav.cart.splice(_idx, 1);
 						}
 					}
+
+					event.target.nextElementSibling.value = val;
 				});
+				
+
+				// console.log(this.$store.state.nav.cart)
 				localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
 			},
 			
@@ -206,6 +224,7 @@
 				//如何去掉nav选中高亮；
 				$('li').removeClass('chen-active');
 				this.$store.dispatch('chenKeyword', {keyword: this.keyword});
+
 			}
 		}
 	}
