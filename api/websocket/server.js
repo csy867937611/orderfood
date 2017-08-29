@@ -9,9 +9,9 @@ app.use(express.static(path.join(__dirname, '../')));
 
 io.on('connection',function(client){
 	client.on('server',function(message){
-		console.log(message);
-
+		var newMess = JSON.parse(message)
+		io.emit('ser',newMess);
 	})
 })
 
-http.listen(1703)
+http.listen(1703);

@@ -56,7 +56,7 @@
                 </el-select>
             </el-form-item>
             <el-form-item label="imgurl:" prop="imgurl">
-                <el-input v-model="editData.imgurl" placeholder="月售量" ></el-input>
+                <el-input v-model="editData.imgurl" placeholder="图片路径" ></el-input>
             </el-form-item>
             <el-form-item label="remain:">
                 <el-input v-model="editData.remain" placeholder="库存量"></el-input>
@@ -117,6 +117,8 @@
 
 <script type="text/javascript">
     import router from '../../router'
+    import baseurl from '../../assets/common/common.js'
+    import './client.scss'
     import $ from 'jquery'
 
     export default {
@@ -202,31 +204,23 @@
                 add: {
                     text: '保存',
                     event: () => {
-                        /*if(!this.$refs.cyqform.$el.validate()){
-                            return false;
-                        }*/
                         this.$refs.cyqform.validate((valid)=>{
                             if(valid){
-                                alert('submit!')
+                                $.post(baseurl + 'addProduct', this.editData,function(res) {
+                                console.log(res)
+                            })
+                                this.$alert('保存成功！','success',{
+                                    confirmButtonText: '确定',
+                                    callback(){
+                                        router.push({name: 'clients'})
+                                    }
+                                })
                             }else{
-                                console.log('error submit!!')
+                                $.alert('保存失败');
                                 return false;
                             }
                         })
-                        /*http.post('Employee/Save', self.dataform)
-                        .then(response => {
-                            if(response.status){
-                                $.alert('保存成功!', function(){
-                                    router.push({name: 'clients'});
-                                })
-                            } else {
-                                $.alert(response.msg);
-                            }
-                        })*/
-                        console.log(this.editData)
-                        $.post('http://localhost:1000/addProduct',this.editData,function(res) {
-                            console.log(res)
-                        })
+                        
                     },
                 },
                 back: {

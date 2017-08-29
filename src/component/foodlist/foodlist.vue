@@ -20,7 +20,7 @@
 		<el-input placeholder="请输入内容" icon="search" class = "chen-search" v-model="keyword" 
 		:on-icon-click="iconSearch"></el-input>
 		<div class="chen-foodlist">
-			
+
 			<div class="chen-food" v-for = "(value, idx) in this.$store.state.nav.category"  >
 				<div class = "chen-img">
 					<img :src="'./src/assets/imgs/' + value.imgurl" alt="" @click = "showPic" />
@@ -135,8 +135,8 @@ console.log('item.num',item.num)
 					event.target.nextElementSibling.value = val;
 				}
 
-				
-				localStorage.cart = JSON.stringify(this.$store.state.nav.cart)
+				// console.log(this.$store.state.nav.cart)
+				localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
 
 			},
 			
