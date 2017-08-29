@@ -17,8 +17,7 @@
 			position: absolute;
 			top: 25%;
 			left: 0.5rem;
-			background: rgb(255, 255, 255);
-			border-radius: 0.2rem;
+			background: #ded0d0;
 			h3{
 				text-align: center;
 			}
@@ -80,7 +79,7 @@
 						border-radius: 100%;
 						right: 0;
 						bottom: 0;
-						background: red;
+						background: #ff4343;
 						color: #fff;
 					}
 				}
@@ -93,10 +92,10 @@
 	overflow:hidden;
 	position: relative;
 	.chen-search{
-		width: 100%;
+		width: 94%;
 		position: absolute;
-		top: 0;
-		left: 0;
+		top: 0.1rem;
+		left: 3%;
 		z-index: 99;
 		input{
 			border: 1px solid #ddd;
@@ -106,13 +105,13 @@
 		width: 100%;
 		height: 100%;
 		overflow: auto;
-		margin-top: 0.68rem;
+		margin-top: 0.88rem;
 		.chen-food{
 			width: 100%;
 			box-sizing: border-box;
-			padding: 0.1rem;
+			padding: 0.2rem;
 			border-bottom: 0.01rem solid #ddd;
-			height: 2.0rem;
+			height: 2.2rem;
 			position: relative;
 			.chen-img{
 				width: 40%;
@@ -187,7 +186,7 @@
 				.chen-sub{
 					// display: none;
 					color: #000;
-					background: #fff;
+					background: #ff4343;
 					right: 1.6rem;
 				}
 			}

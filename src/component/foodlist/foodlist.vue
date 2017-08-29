@@ -59,7 +59,7 @@
 				cart = [];
 			};
 			this.$store.state.nav.cart = cart;
-			console.log(this.$store.state.nav.cart);
+		
 		},
 		methods: {
 			touchmove: function(e){
@@ -75,6 +75,7 @@
 					if(item.ID == currentId){
 
 						item.num++;
+						
 						event.target.previousElementSibling.value = item.num;
 
 						var idx = this.$store.state.nav.cart.indexOf(item);
