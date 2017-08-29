@@ -32,7 +32,9 @@
 					<span>{{price}}</span>
 				</p>
 			</div>
-			<input type="button" class="paid" value="买单" @click="showDetail">
+			<router-link to='/paid' class="paid">
+				<span >买单</span>
+			</router-link>
 		</div>
 	</div>
 </template>
@@ -46,11 +48,7 @@
 	export default{
 		data(){
 		      return {
-		        tableData: [{
-		          name: '豆角小炒肉',
-		          schedule:'进行中...',
-		          require: <el-button type="warning">催单</el-button>
-		        }],
+		        tableData: [],
 		        page:'',
 		        price:''
 		      }
@@ -68,12 +66,15 @@
 		created(){
 			this.page = this.$route.query.obj.id;
 			var number = 0;
-			for(var i = 0 ; i < this.$store.state.detail.arr.length; i++){
-				this.$store.state.detail.arr[i].require = <el-button type="warning">催单</el-button>;
-				number += this.$store.state.detail.arr[i].price
+			if(this.$store.state.nav.cart != ''){
+				for(var i = 0 ; i < this.$store.state.nav.cart.length; i++){
+					this.$store.state.nav.cart[i].require = <el-button type="warning">催单</el-button>;
+					number += this.$store.state.nav.cart[i].nowPrice
+				}
+				this.price = number;
+				this.tableData = this.tableData.concat(this.$store.state.nav.cart);
 			}
-			this.price = number;
-			this.tableData = this.tableData.concat(this.$store.state.detail.arr)
+			console.log(this.$store.state.nav.cart);
 		}
 	}
 </script>
