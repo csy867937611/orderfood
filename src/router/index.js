@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import order from '../component/order/order.vue'
 import adminHome from '../component/adminHome/home.vue'
+import kitchen from '../component/kitchen/kitchen.vue'
+import jiedan from '../component/jiedan/jiedan.vue'
 import home from '../component/home/home.vue';
 import waiter from '../component/waiter/waiter.vue';
 import foodlist from '../component/foodlist/foodlist.vue';
@@ -11,6 +13,7 @@ import clients from '../component/clients/clients.vue'
 import client from '../component/client/client.vue'
 import detail from '../component/waiter/details/detail.vue';
 import update from '../component/update/update.vue'
+import paid from '../component/paid/paid.vue';
 
 
 Vue.use(VueRouter);
@@ -40,9 +43,10 @@ const router = new VueRouter({
 			]
 		},
 		{path:'/waiter',component:waiter},
-
-		{path:'/detail',component:detail}
-
+		{path:'/detail',component:detail},
+		{path:'/paid',component:paid},
+		{path:'/kitchen',component:kitchen},
+		{path:'/jiedan',component:jiedan}
 
 	]
 })

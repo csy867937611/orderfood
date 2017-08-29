@@ -1,4 +1,5 @@
 <template>
+
 <div class = "chen-main">
 	<div class = "chen-show" v-show = "show">
 		<div class="chen-showPic" @touchmove = "touchmove">
@@ -34,6 +35,7 @@
 					<input type="number" class="chen-num" v-show = "value.num > 0" :value = "value.num" />
 					<p class="chen-add" @click = "add">点</p>
 				</div>
+
 			</div>
 		</div>
 	</div>
@@ -46,9 +48,14 @@
 		data: function(){
 			return {
 				show: false,
+
+				count: 0,
+
 				keyword: '',
+
 				arr: [],
 				num: 0
+
 			}
 		},
 		mounted: function(){
@@ -68,6 +75,20 @@
 			  
 			},
 			add: function(event){
+
+				$(event.target).siblings().show();
+				var val = event.target.previousElementSibling.value;
+				if(val){
+					console.log('val', val);
+					val++;
+					event.target.previousElementSibling.value = val;
+					
+				}else{
+					event.target.previousElementSibling.value = 1;
+				}
+				this.count++;
+				this.show = true;
+
 				// 当前菜品ID；
 				var currentId = $(event.target).parent().attr('data-id');
 
@@ -87,7 +108,13 @@
 						console.log('item.num',item.num)                                                             
 						localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
 					}
-				});	
+
+				});
+				console.log(this.$store.state.nav.cart);
+				
+				localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
+				
+
 			},
 			sup: function(event){
 				// 当前菜品ID；
@@ -103,7 +130,12 @@
 						}
 						event.target.nextElementSibling.value = item.num;
 					}
+
+					event.target.nextElementSibling.value = val;
 				});
+				
+
+				// console.log(this.$store.state.nav.cart)
 				localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
 			},
 			
@@ -206,6 +238,7 @@
 				//如何去掉nav选中高亮；
 				$('li').removeClass('chen-active');
 				this.$store.dispatch('chenKeyword', {keyword: this.keyword});
+
 			}
 		}
 	}

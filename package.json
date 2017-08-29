@@ -26,7 +26,6 @@
     "babel-preset-latest": "^6.0.0",
     "babel-preset-stage-2": "^6.24.1",
     "babel-preset-vue-app": "^1.2.1",
-    "babel-preset-env": "^1.5.1",
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
