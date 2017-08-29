@@ -16,10 +16,11 @@ const actions = {
 }
 
 const mutations = {
-	jie: (data) =>{
-		console.log(data)
-		var message = '菜名：满汉全席  制作时间：60 分钟';
-		var mess = encodeURIComponent(message);
+	jie: (data,n) =>{
+		console.log(n);
+		
+		var mess = JSON.stringify(n)
+		mess = decodeURIComponent(mess);
 		// 转码函数 decodeURIComponent()
 		// 解码函数 encodeURIComponent()
 		var socket = io.connect('ws://localhost:1703');
