@@ -25,6 +25,7 @@
 				<div class = "chen-img">
 					<img :src="'./src/assets/imgs/' + value.imgurl" alt="" @click = "showPic" />
 				</div>
+				<div class = "chen-hot" v-if = "value.isFamous=='Y'"><i class="iconfont icon-hot"></i></div>
 				<div class="chen-details">
 					<p class="chen-name">{{value.name}}</p>
 					<p class = "chen-price">价格：{{value.nowPrice}}</p>

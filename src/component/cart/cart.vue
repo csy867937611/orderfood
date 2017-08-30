@@ -93,13 +93,21 @@
 				var data = this.$store.state.nav.cart;
 				console.log(data)
 				socket.emit('order', encodeURI(JSON.stringify(data)));
-			    socket.on('clientOrder', function (data) {
+			    socket.on('clientOrder', (data)=> {
 			        console.log(JSON.parse(decodeURI(data)));
-			        // socket.emit('server', { my: 123 });
+			        this.$store.state.nav.client = JSON.parse(decodeURI(data));
 			    });
 			}
 		},
 		created: function(){
+			var socket = io.connect('ws://10.3.134.54:1703');
+
+		 	socket.on('kitchen', function(data){
+		 		var res = JSON.parse(decodeURI(data));
+		 		console.log(res);
+		 		// this.$store.state.nav.client = res;
+		    	
+		    });
 		
 			var cart;
 			if(localStorage.cart){

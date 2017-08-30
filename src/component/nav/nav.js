@@ -6,7 +6,8 @@ const state = {
 	all: [],
 	category: [],
 	className: [],
-	cart: []
+	cart: [],
+	client: []
 };
 
 const actions = {

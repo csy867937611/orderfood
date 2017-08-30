@@ -14,6 +14,7 @@ import client from '../component/client/client.vue'
 import detail from '../component/waiter/details/detail.vue';
 import update from '../component/update/update.vue'
 import paid from '../component/paid/paid.vue';
+import client_kitchen from '../component/client_kitchen/client_kitchen.vue';
 
 
 Vue.use(VueRouter);
@@ -39,7 +40,9 @@ const router = new VueRouter({
 				{path: '/甜点', component: nav},
 				{path: '/饮品', component: nav},
 				{path: '/callWaiter', component: {template: '<div>hello world!</div>'}},
-				{path: '/cart', component: cart}
+				{path: '/cart', component: cart},
+				{path: '/client_kitchen', component: client_kitchen}
+
 			]
 		},
 		{path:'/waiter',component:waiter},
