@@ -7,7 +7,7 @@ const state = {
 	category: [],
 	className: [],
 	cart: [],
-	client: []
+	client: [],
 };
 
 const actions = {
