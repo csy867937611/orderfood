@@ -103,9 +103,11 @@
 </template>
 
 <script type="text/javascript">
-  import baseurl from '../../assets/common/common.js'
+  import base from'../../assets/common/common.js'
 	import './datagrid.scss'
   import $ from 'jquery'
+
+  var baseurl = base.global.baseurl;
 
 	export default {
 		name: 'datagrid',
@@ -168,7 +170,6 @@
 
       //删除菜品
       remove(evt) {
-        console.log(baseurl)
         var self = this;
         this.$confirm('此操作将永久删除该菜品, 是否继续?', '提示', {
           confirmButtonText: '确定',
