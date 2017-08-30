@@ -17,7 +17,7 @@ const actions = {
 
 const mutations = {
 	jie: (data,n) =>{
-				
+		console.log(state.data);
 		var mess = encodeURI(JSON.stringify(state.data))
 		
 		var socket = io.connect('ws://10.3.134.54:1703');

@@ -56,15 +56,16 @@
 				this.$store.state.jiedan.data.map((item, idx)=>{
 					if(item.ID == completeId){
 						item.status = '已接单';
-						this.$store.state.jiedan.receive.push(item);
+						this.$store.state.jiedan.receive.push(item);						
 					}
 				})
 
-				//传菜单状态
-				
-				this.$store.dispatch('jie')
+				if(this.$store.state.jiedan.receive.status === '已接单'){					
+					//传菜单状态
+					this.$store.dispatch('jie');
+					console.log('已接单', completeId);
+				}
 
-				console.log('component', completeId);
 				// console.log(this.$store.state.nav.cart[0].name)
 				
 				
