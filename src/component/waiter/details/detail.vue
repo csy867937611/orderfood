@@ -73,15 +73,7 @@
 				
 				this.page = '1001';
 			}
-			var number = 0;
-			var socket = io.connect('ws://localhost:1703');
-			socket.on('clientOrder',function(order){
-				var orders = JSON.parse(decodeURI(order));
-				if(orders){
-					console.log(orders);
-					this.tableData = this.tableData.concat(orders);
-				}
-			}.bind(this))
+			this.tableData = this.tableData.concat(this.$store.state.detail.newarr) ;
 			/*if(this.$store.state.nav.cart != ''){
 				for(var i = 0 ; i < this.$store.state.nav.cart.length; i++){
 					this.$store.state.nav.cart[i].require = <el-button type="warning">催单</el-button>;

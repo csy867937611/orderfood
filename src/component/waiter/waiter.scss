@@ -36,20 +36,24 @@
 			display: flex;
 			justify-content: space-around;
 			flex-wrap: wrap;
+
 			ul{
-				background:#C0CCDA;
+				background-image:url(http://localhost:8080/src/assets/imgs/background/bg001.jpg);
+				background-size: cover;
 				width:40%;
 				height:2.0rem;
 				border:1px solid #C0CCDA;
-				border-radius: 0.13rem;
+				border-radius: 50%;
 				float:left;
 				margin-bottom: 0.27rem;
+
 				li{
 					font-size:0.32rem;
 					margin:0 auto;
 					list-style: none;
 					margin-bottom: 0.13rem;
 					span{width:100%;text-align: center;display: block;}
+					color:#5a383b;
 				}
 				li:nth-of-type(1){
 					font-size: 0.4rem;

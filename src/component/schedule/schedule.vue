@@ -2,7 +2,7 @@
 	<div class="su-details">
 		<div id="su-headers">
 			<span>
-				<router-link to="/detail">
+				<router-link to="/waiter">
 					<i class="el-icon-arrow-left"></i>
 				</router-link>
 			</span>
@@ -44,12 +44,15 @@
 		},
 		created(){
 			var socket = io.connect('ws://localhost:1703');
-			socket.on('chilken',function(food){
-				console.log(food);
-				/*if(food){
-					this.tableData = this.tableData.concat(order);
-				}*/
-			})
+			socket.on('kitchen',function(food){
+				var orders = JSON.parse(decodeURI(food));
+				console.log(orders)
+				if(food){
+					console.log(orders)
+					orders.schedule = '已接单';
+					this.tableData = this.tableData.concat(orders);
+				}
+			}.bind(this))
 		}
 
 	};

@@ -11,7 +11,7 @@
 			</div>
 			<div class="aoh">
 				<ul v-for="(obj,index) in this.$store.state.waiter.arraoh" :ref="obj.id" :id="obj.id">
-					<router-link :to="{path:'detail',query:{obj}}">
+					<router-link :to="{path:'detail',query:{obj}}"  @click="message">
 						<li v-for="(value,key) in obj">
 							<span>{{value}}</span>
 						</li>
@@ -79,6 +79,9 @@
 				}else{
 					console.log(6)
 				}
+			},
+			message:()=>{
+				this.$store.dispatch('date');
 			}
 		},
 		props:['id']
