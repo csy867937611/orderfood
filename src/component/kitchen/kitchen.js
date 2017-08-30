@@ -28,6 +28,15 @@ const mutations = {
 		console.log(message)
 			
 		});
+	},
+	topover: (data, n)=>{
+
+		var abc = encodeURI(JSON.stringify(state.data))
+		var socket = io.connect('ws://10.3.134.54:1703');
+		socket.emit('cooking', abc);
+		socket.on('kitchen', function(abc){
+			console.log(JSON.parse(decodeURI(abc)));
+		})
 	}
 	
 };
