@@ -10,24 +10,9 @@ app.use(express.static(path.join(__dirname, '../')));
 io.on('connection',function(client){
 
 	client.on('server',function(message){
-
-
-		var newMess = JSON.parse(decodeURI(message));
-
-		io.emit('ser',newMess);
-		console.log(newMess);
-		
-
-		// var newMess = JSON.parse(message)
-		// message = encodeURIComponent(message)
-		// io.emit('ser',message);
-		// console.log(message);
-
 		// var newMess = JSON.parse(message)
 		/*message = encodeURIComponent(message)*/
 		io.emit('ser',message);
-
-
 	});
 	client.on('waiter',function(offer){
 			console.log(offer)

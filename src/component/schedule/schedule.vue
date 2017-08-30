@@ -21,7 +21,7 @@
 		      align="center">
 		    </el-table-column>
 		    <el-table-column
-		      prop="schedule"
+		      prop="status"
 		      label="进度"
 		      align="center">
 		    </el-table-column>
@@ -44,13 +44,18 @@
 		},
 		created(){
 			var socket = io.connect('ws://localhost:1703');
+			
 			socket.on('kitchen',function(food){
 				var orders = JSON.parse(decodeURI(food));
 				console.log(orders)
 				if(food){
 					console.log(orders)
-					orders.schedule = '已接单';
-					this.tableData = this.tableData.concat(orders);
+					for(var i = 0 ; i < this.$store.state.detail.newarr.length; i++){
+						if(this.$store.state.detail.newarr[i].name == orders[0].name){
+							this.$store.state.detail.newarr[i].status = '已接单'
+						}
+					}
+					this.tableData = this.tableData.concat(this.$store.state.detail.newarr);
 				}
 			}.bind(this))
 		}
