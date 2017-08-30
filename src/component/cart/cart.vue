@@ -35,7 +35,9 @@
 
 <script>
 	import './cart.scss';
+	import wsurl from '../../assets/common/common.js'
 
+	var _iourl = wsurl.global.iourl;
 	export default {
 		data: function(){
 			return {
@@ -87,11 +89,10 @@
 					}
 				});
 			},
-			order: function(){
-				
+			order: function(){	
 				
 				if(this.$store.state.nav.cart.length){
-					var socket = io.connect('ws://10.3.134.54:1703');
+					var socket = io.connect(iourl);
 					var data = this.$store.state.nav.cart;
 
 					console.log(9999999);
@@ -109,7 +110,6 @@
 				        this.$store.state.nav.client = JSON.parse(decodeURI(data));
 				    });
 				}
-
 			}
 		},
 		created: function(){

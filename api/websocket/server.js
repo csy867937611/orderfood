@@ -28,7 +28,11 @@ io.on('connection',function(client){
 	client.on('cooking',function(schedule){
 		console.log(schedule);
 		io.emit('kitchen',schedule);
-	})
+	});
+	client.on('success',function(getfood){
+		console.log(getfood);
+		io.emit('suc',getfood);
+	});
 
 })
 

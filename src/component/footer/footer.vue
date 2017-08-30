@@ -25,13 +25,16 @@
 	import './footer.scss';
 	import router from '../../router';
 	import $ from 'jquery';
+	import wsurl from '../../assets/common/common.js'
+
+	var _iourl = wsurl.global.iourl;
 
 	export default {
 		methods: {
 			chenCallWaiter: function(){
 				this.$store.state.home.show = true;
 
-				var socket = io.connect('ws://10.3.134.54:1703');
+				var socket = io.connect(_iourl);
 				var data = {table: 1}
 				socket.emit('server', data);
 
