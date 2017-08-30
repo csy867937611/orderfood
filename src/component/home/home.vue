@@ -26,6 +26,10 @@
 	// import foodlist from '../foodlist/foodlist.vue';
 	import Foot from '../footer/footer.vue';
 	import './home.scss';
+	import wsurl from '../../assets/common/common.js'
+
+	var _iourl = wsurl.global.iourl;
+
 	export default {
 		components: {
 			ChenNav,
@@ -39,6 +43,21 @@
 				console.log('chenClose');
 				this.$store.state.home.show = false;
 			}
+		},
+		created: function(){
+			var socket = io.connect(_iourl);
+			//监听服务端发过来的数据；
+		    socket.on('kitchen', (data)=> {
+		        console.log(1234, JSON.parse(decodeURI(data)));
+		        var res = JSON.parse(decodeURI(data));
+		        this.$store.state.nav.client = res;
+		    });
+		    socket.on('suc', (data)=> {
+		        console.log(1234, JSON.parse(decodeURI(data)));
+		        var res = JSON.parse(decodeURI(data));
+		        this.$store.state.nav.client = res;
+		    });
+
 		}
 	}
 </script>
