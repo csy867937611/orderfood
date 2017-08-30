@@ -9,7 +9,8 @@
 				<p class="ppp" :data-id = "value.ID">菜品名称：<span>{{value.name}}</span>  数量：<span>{{value.num}}</span></p>
 				
 			    <p><el-button type="info" @click="jie">接单</el-button>
-			    <el-button type="warning" @click="footover">售馨</el-button></p>
+			   <!--  <el-button type="warning" @click="footover">售馨</el-button></p> -->
+			    <el-button :plain="true" @click="jindu">进度</el-button></p>
 			    
 			
 		</div>
@@ -22,7 +23,8 @@
 
 <script>
 	import $ from 'jquery';
-	import './jiedan.scss'
+	import './jiedan.scss';
+	import router from '../../router';
 	console.log(8888)
 
 		
@@ -67,8 +69,10 @@
 				
 				
 			},
-			footover: function(){
-				console.log('over')
+
+			jindu: function(){
+				console.log(router)
+				router.push('/kitchen')
 			}
 		}
 

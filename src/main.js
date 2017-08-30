@@ -21,8 +21,8 @@ import App from './App.vue'
 import router from './router/index.js'
 import store from './vuex/store.js'
 
-import jiedan from './component/jiedan/jiedan'
-import kitchen from './component/kitchen/kitchen'
+// import jiedan from './component/jiedan/jiedan'
+// import kitchen from './component/kitchen/kitchen'
 
 import ElementUI from 'element-ui';
 import '../node_modules/element-ui/lib/theme-default/index.css'
