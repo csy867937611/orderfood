@@ -6,6 +6,8 @@
 
 <script type="text/javascript">
     import datagrid from '../datagrid/datagrid.vue'
+    import base from '../../assets/common/common.js'
+    var baseurl = base.global.baseurl
     import router from '../../router'
 
     export default {

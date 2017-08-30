@@ -66,7 +66,7 @@ exports.register = function (app){
 		});
 	});
 	app.get('/search',function(req,res) {
-		console.log('req.body',req.query)
+		console.log('req.query',req.query)
 		sql.keyword('prodcuts',req.query,function(data){
 			res.send(data);
 		});

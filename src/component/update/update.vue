@@ -120,7 +120,9 @@
 
 <script>
   import router from '../../router'
-  import baseurl from '../../assets/common/common.js'
+  import base from '../../assets/common/common.js'
+  var baseurl = base.global.baseurl;
+
   import './update.scss'
   import $ from 'jquery'
   export default {
