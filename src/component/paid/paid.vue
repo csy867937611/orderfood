@@ -16,15 +16,18 @@
 		    <el-table-column
 		      prop="name"
 		      label="菜名"
-		      width="180">
+		      width="180"
+		      align="center">
 		    </el-table-column>
 		    <el-table-column
 		      prop="nowPrice"
-		      label="价格">
+		      label="价格"
+		      align="center">
 		    </el-table-column>
 		    <el-table-column
 		      prop="num"
-		      label="数量">
+		      label="数量"
+		      align="center">
 		    </el-table-column>
 		  </el-table>
 		</div>
@@ -58,9 +61,9 @@
 		},
 		created(){
 			var num = 0 ;
-			this.tableData = this.tableData.concat(this.$store.state.detail.newarr) ;
-			for(var i = 0 ; i < this.$store.state.detail.newarr.length; i++){
-				num += this.$store.state.detail.newarr[i].num*this.$store.state.detail.newarr[i].nowPrice;
+			this.tableData = this.tableData.concat(this.$store.state.waiter.newarr) ;
+			for(var i = 0 ; i < this.$store.state.waiter.newarr.length; i++){
+				num += this.$store.state.waiter.newarr[i].num*this.$store.state.waiter.newarr[i].nowPrice;
 			}
 			this.price = num ;
 		},

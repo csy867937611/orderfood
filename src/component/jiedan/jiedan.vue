@@ -26,7 +26,9 @@
 	import './jiedan.scss';
 	import router from '../../router';
 	console.log(8888)
+	import wsurl from '../../assets/common/common.js'
 
+	var _wsurl = wsurl.global.wsurl;
 		
 	
 
@@ -39,7 +41,7 @@
 			}
 		},
 		created: function(){
-			var socket = io.connect('ws://10.3.134.54:1703');
+			var socket = io.connect(_wsurl);
 			socket.on('clientOrder', (mess)=>{
 				console.log(JSON.parse(decodeURI(mess)));
 				var data = JSON.parse(decodeURI(mess))
