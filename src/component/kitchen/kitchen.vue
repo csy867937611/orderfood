@@ -15,14 +15,14 @@
 			<div class="kit-contenter" >
 				<!-- <div class="dingdan" v-for="(value,key) in this.$store.state.nav.category"> -->
 				<div class="dingdan" >
-				<div v-for="(value,key) in this.$store.state.nav.cart">
+				<div v-for="(value,key) in this.$store.state.jiedan.receive">
 					<p class="ppp" :data-id = "value.ID">
-						id:<span>{{value.ID}}</span>&nbsp; 
+						 
 						菜品名称:<span>{{value.name}}</span>&nbsp;  
 						数量:<span>{{value.num}}份</span>&nbsp;
 						制作时间:<span>{{(value.num)*(value.time)}}分钟 </span>
 					</p>
-					<p><el-button :plain="true" >上菜</el-button></p>
+					<p><el-button :plain="true" @click="topover">上菜</el-button></p>
 				</div>
 				</div>
 				<!-- </div> -->
@@ -31,7 +31,7 @@
 					<p>
 						<el-button :plain="true" type="success" class="serve" @click="serving">上菜</el-button>
 					</p> -->
-					66666666
+					
 					<br/>
 				</div>
 			</div>
@@ -70,6 +70,17 @@
 			},
 			serving: function(){
 				console.log(555);
+			},
+			topover: function(event){
+				// console.log(this.$store.state.jiedan.receive[0].status)
+				var  currentId = $(event.target).parents("p").prev().data('id');
+				this.$store.state.jiedan.data.map((item, idx)=>{
+					if(item.ID == currentId){
+						item.status = '已完成';
+					}
+				})
+
+				console.log('已完成', currentId);
 			}
 			
 		}
