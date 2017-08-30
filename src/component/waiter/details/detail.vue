@@ -65,7 +65,7 @@
 			
 		},
 		created(){
-			this.$store.dispatch('showDetail');
+			/*this.$store.dispatch('showDetail');*/
 			if(this.$route.query.obj.id){
 				console.log(777);
 				this.page = this.$route.query.obj.id;
@@ -73,7 +73,7 @@
 				
 				this.page = '1001';
 			}
-			this.tableData = this.tableData.concat(this.$store.state.detail.newarr) ;
+			this.tableData = this.tableData.concat(this.$store.state.waiter.newarr) ;
 			/*if(this.$store.state.nav.cart != ''){
 				for(var i = 0 ; i < this.$store.state.nav.cart.length; i++){
 					this.$store.state.nav.cart[i].require = <el-button type="warning">催单</el-button>;

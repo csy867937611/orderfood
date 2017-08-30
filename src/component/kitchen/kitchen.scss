@@ -30,6 +30,7 @@ h1{
 	display: flex;
 	.wrapper{
 		flex: 50%;
+		text-align: center;
 	}
 }
 .kit-header{
@@ -42,6 +43,13 @@ h1{
 	left: 0;
 }
 
+.dingdan{
+	width: 100%;
+	.dingdan2{
+		padding: 5px;
+		border-bottom: 1px solid #ccc;
+	}
+}
 .success{
 	display: none;
 }

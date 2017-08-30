@@ -17,7 +17,7 @@ const actions = {
 	find:(store,value)=>{
 		store.commit('find',value)
 	},
-	message:(store,value)=>{
+	message:(store)=>{
 		store.commit('message');
 	}
 }

@@ -46,12 +46,20 @@
 		    }
 		},
 		created(){
-			this.tableData = this.tableData.concat(this.$store.state.detail.newarr);
+			this.tableData = this.tableData.concat(this.$store.state.waiter.newarr);
 			var socket = io.connect(_wsurl);
 			socket.on('kitchen',function(food){
 				var orders = JSON.parse(decodeURI(food));
 				console.log(orders);
 				this.tableData = orders;
+				for(var i = 0 ; i < orders.length; i++){
+					if(orders[i].status == '已完成'){
+						this.$alert(orders[i].name+'上菜','注意', {confirmButtonText:'确定' ,callback(){}
+						})
+					}
+					
+					
+				}
 				/*if(food){
 					console.log(orders)
 					console.log(this.$store.state.detail.newarr)
@@ -65,7 +73,7 @@
 			}.bind(this));
 			socket.on('suc',function(getfood){
 				var _getfood = JSON.parse(decodeURI(getfood));
-				consoe.log(_getfood)
+				console.log(_getfood)
 			})
 		}
 

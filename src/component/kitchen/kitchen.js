@@ -1,8 +1,6 @@
 import http from '../../utils/HttpClient';
 import Vue from 'vue';
-import wsurl from '../../assets/common/common.js'
 
-var _wsurl = wsurl.global.wsurl;
 
 
 const state = {
@@ -16,6 +14,10 @@ const actions = {
  		// console.log('actions')
  		store.commit('center', n);
  		console.log(store)
+ 	},
+ 	topover: (store, n)=>{
+ 		store.commit('topover', n);
+ 		console.log(store)
  	}
 };
 
@@ -24,7 +26,7 @@ const mutations = {
 		console.log(1111111111111)
 		
 
-		var socket = io.connect(_wsurl);
+		var socket = io.connect('ws://10.3.134.54:1703');
 		socket.on('chilken', function(message){
 			
 		console.log(message)
@@ -33,10 +35,10 @@ const mutations = {
 	},
 	topover: (data, n)=>{
 
-		var abc = encodeURI(JSON.stringify(state.data))
+		var abc = encodeURI(JSON.stringify(n));
 		var socket = io.connect('ws://10.3.134.54:1703');
-		socket.emit('cooking', abc);
-		socket.on('kitchen', function(abc){
+		socket.emit('success', abc);
+		socket.on('suc', function(abc){
 			console.log(JSON.parse(decodeURI(abc)));
 		})
 	}

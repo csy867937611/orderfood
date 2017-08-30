@@ -58,6 +58,7 @@
 		},
 		created:function(){
 			this.$store.dispatch('date');
+			this.$store.dispatch('message');
 			var socket = io.connect(_wsurl);
 			socket.on('ser',(message)=>{
 				console.log(message);
@@ -70,6 +71,7 @@
 					})
 				}
 			})
+			
 		},
 		methods:{
 			find:function(value){
@@ -82,9 +84,6 @@
 				}else{
 					console.log(6)
 				}
-			},
-			message:()=>{
-				this.$store.dispatch('date');
 			}
 		},
 		props:['id']
