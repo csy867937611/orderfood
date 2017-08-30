@@ -45,6 +45,7 @@
 <script>
 	import './foodlist.scss';
 	import $ from 'jquery';
+	
 	export default{
 		data: function(){
 			return {

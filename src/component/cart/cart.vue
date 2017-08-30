@@ -92,7 +92,7 @@
 			order: function(){	
 				
 				if(this.$store.state.nav.cart.length){
-					var socket = io.connect('ws://10.3.134.54:1703');
+					var socket = io.connect(_wsurl);
 					var data = this.$store.state.nav.cart;
 
 					console.log(9999999);
