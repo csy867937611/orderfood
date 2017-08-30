@@ -12,8 +12,7 @@
   //1rem=100px  就是所有的css属性的属性值都是用rem来表示
 
   import spinner from './component/spinner/spinner.vue';
-  import kitchen from './component/kitchen/kitchen.vue';
-  import jiedan from './component/jiedan/jiedan';
+
   export default {
     name: "app",
     components: {

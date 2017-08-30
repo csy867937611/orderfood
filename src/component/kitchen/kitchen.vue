@@ -22,7 +22,10 @@
 						数量:<span>{{value.num}}份</span>&nbsp;
 						制作时间:<span>{{(value.num)*(value.time)}}分钟 </span>
 					</p>
-					<p><el-button :plain="true" @click="topover">上菜</el-button></p>
+					<p>
+						<el-button :plain="true" @click="topover">上菜</el-button>
+						<!-- <el-button :plain="true" @click="jindu">进度</el-button> -->
+					</p>
 				</div>
 				</div>
 				<!-- </div> -->
@@ -45,7 +48,9 @@
 
 <script type="text/javascript">
 	import $ from 'jquery';
-	import './kitchen.scss'
+	import './kitchen.scss';
+	import router from '../../router';
+
 
 	export default {
 		name: 'kitchen',
@@ -82,6 +87,7 @@
 
 				console.log('已完成', currentId);
 			}
+			
 			
 		}
 	}
