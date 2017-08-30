@@ -92,7 +92,7 @@
 			order: function(){	
 				
 				if(this.$store.state.nav.cart.length){
-					var socket = io.connect(iourl);
+					var socket = io.connect(_iourl);
 					var data = this.$store.state.nav.cart;
 
 					console.log(9999999);

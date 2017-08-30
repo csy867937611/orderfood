@@ -15,18 +15,18 @@
 			<div class="kit-contenter" >
 				<!-- <div class="dingdan" v-for="(value,key) in this.$store.state.nav.category"> -->
 				<div class="dingdan" >
-				<div v-for="(value,key) in this.$store.state.jiedan.data">
-					<p class="ppp" :data-id = "value.ID">
-						 
-						菜品名称:<span>{{value.name}}</span>&nbsp;  
-						数量:<span>{{value.num}}份</span>&nbsp;
-						制作时间:<span>{{(value.num)*(value.time)}}分钟 </span>
-					</p>
-					<p>
-						<el-button :plain="true" @click="topover">上菜</el-button>
-						<!-- <el-button :plain="true" @click="jindu">进度</el-button> -->
-					</p>
-				</div>
+					<div class="dingdan2" v-for="(value,key) in this.$store.state.jiedan.data">
+						<p class="ppp" :data-id = "value.ID">
+							 
+							菜品名称:<span>{{value.name}}</span>&nbsp;  
+							数量:<span>{{value.num}}份</span>&nbsp;
+							制作时间:<span>{{(value.num)*(value.time)}}分钟 </span>
+						</p>
+						<p>
+							<el-button :plain="true" @click="topover">上菜</el-button>
+							<!-- <el-button :plain="true" @click="jindu">进度</el-button> -->
+						</p>
+					</div>
 				</div>
 				<!-- </div> -->
 				<div class="success">

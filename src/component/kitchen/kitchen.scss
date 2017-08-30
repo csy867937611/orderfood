@@ -43,6 +43,13 @@ h1{
 	left: 0;
 }
 
+.dingdan{
+	width: 100%;
+	.dingdan2{
+		padding: 5px;
+		border-bottom: 1px solid #ccc;
+	}
+}
 .success{
 	display: none;
 }
