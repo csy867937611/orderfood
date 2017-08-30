@@ -3,10 +3,14 @@
         height:1rem;
         margin-bottom:0.13rem;
         background:lightblue;
-        span{
+        span:nth-of-type(1){
+            margin-left:0.2rem;
+            font-size:0.4rem;
+        }
+        span:nth-of-type(2){
+            margin-left:2.6rem;
             font-size:0.5rem;
-            display: block;
-            width:100%;
+            display:inline-block;
             text-align:center;
             line-height:1rem;
         }
@@ -45,9 +49,9 @@
         justify-content: space-between;
         font-size:0.4rem;
         line-height:1rem;
-        padding-left:0.26rem;
         .money{
-            vertical-align: middle;
+            text-align: center;
+            width:50%;
         }
         .paid{
             width:50%;
@@ -57,6 +61,7 @@
             border:0;
         }
         .el-button{
+            font-size:0.4rem;
             width:50%;
             text-align: center;
             background:#F7BA2A;

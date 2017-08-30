@@ -32,6 +32,7 @@
 				<span class="seconds">{{this.$store.state.waiter.seconds}}</span>
 			</div>
 		</div>
+		 
 	</div>
 </template>
 
@@ -54,6 +55,18 @@
 		},
 		created:function(){
 			this.$store.dispatch('date');
+			var socket = io.connect('ws://localhost:1703');
+			socket.on('ser',(message)=>{
+				console.log(message);
+				if(message){
+					console.log(666);
+					var offer = 'ok'
+					this.$alert('第'+message.table+'桌客人呼叫服务','注意', {confirmButtonText:'确定' ,callback(){
+						socket.emit('waiter',offer);
+						}
+					})
+				}
+			})
 		},
 		methods:{
 			find:function(value){
@@ -66,10 +79,10 @@
 				}else{
 					console.log(6)
 				}
-				
 			}
 		},
 		props:['id']
+
 	}
 
 </script>

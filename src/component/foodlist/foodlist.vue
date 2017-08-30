@@ -48,14 +48,9 @@
 		data: function(){
 			return {
 				show: false,
-
-				count: 0,
-
 				keyword: '',
-
 				arr: [],
 				num: 0
-
 			}
 		},
 		mounted: function(){
@@ -66,7 +61,6 @@
 				cart = [];
 			};
 			this.$store.state.nav.cart = cart;
-
 		},
 		methods: {
 			touchmove: function(e){
@@ -75,33 +69,21 @@
 			  
 			},
 			add: function(event){
-
 				// 当前菜品ID；
 				var currentId = $(event.target).parents("div").attr('data-id');
 
 				this.$store.state.nav.category.map((item, idx)=>{
 					if(item.ID == currentId){
-
 						item.num++;
-						
-						
-
 						var idx = this.$store.state.nav.cart.indexOf(item);
 						console.log(idx);
 						if(idx < 0){
 							this.$store.state.nav.cart.push(item);
 						}
-
 						console.log('item.num',item.num)                                                             
 						localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
 					}
-
-				});
-				console.log(this.$store.state.nav.cart);
-				
-				localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
-				
-
+				});	
 			},
 			sup: function(event){
 				// 当前菜品ID；
@@ -110,18 +92,12 @@
 				this.$store.state.nav.category.map((item, idx)=>{
 					if(item.ID == currentId){
 						item.num--;
-
 						if(item.num <= 0 ){
 							var _idx = this.$store.state.nav.cart.indexOf(item);
 							this.$store.state.nav.cart.splice(_idx, 1);
 						}
 					}
-
-					event.target.nextElementSibling.value = val;
 				});
-				
-
-				// console.log(this.$store.state.nav.cart)
 				localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
 			},
 			
@@ -130,25 +106,20 @@
 			},
 			showPic: function(event){
 				console.log('showPic');
-
 				//显示图片；
 				this.show = true;
-
 				//获取图片宽度；
 				var _width = $('.chen-details').width() * this.$store.state.nav.category.length;
-
 				//赋值；
 				this.num = $(event.target).parents('.chen-food').attr('idx');
 				console.log(this.num)
 				
 				$('.chen-detailsList').width(_width);
-
 				//获取偏移量；
 				var left = $('.chen-details').width() + 2*$('.chen-prev').width();
 				
 				//默认left值；
 				var _left = left * (this.num);
-
 				//设置left值；图片显示相应的图片；
 				$('.chen-detailsList').css({left:-_left});
 			},
@@ -158,40 +129,30 @@
 			prevPic: function(){
 				//显示上一张；
 				console.log('prevPic');
-
 				//获取偏移量；
 				var left = $('.chen-details').width() + 2*$('.chen-prev').width();
-
 				this.num--;
-
 				//this.num <=0 时，设置默认值0；
 				if(this.num <= 0){
 					this.num = 0;
 				};
-
 				//计算left值；
 				var _left = left * this.num;
-
 				//动画切换上一张；
 				$('.chen-detailsList').animate({left: -_left});
 			},
 			nextPic: function(){
 				//显示下一张图片；
 				console.log('nextPic');
-
 				//获取单位偏移量；
 				var left = $('.chen-details').width() + 2*$('.chen-prev').width();
-
 				//计算left值；
 				this.num++;
-
 				//this.num <=0 时，设置默认值0；
 				if(this.num >= this.$store.state.nav.category.length){
 					this.num = this.$store.state.nav.category.length;
 				};
-
 				var _left = left * this.num;
-
 				//动画切换下一张；
 				$('.chen-detailsList').animate({left: -_left});
 			},
@@ -202,16 +163,13 @@
 
 				this.$store.state.nav.category.map((item, idx)=>{
 					if(item.ID == currentId){
-
 						item.num++;
 						// event.target.previousElementSibling.value = item.num;
-
 						var idx = this.$store.state.nav.cart.indexOf(item);
 						console.log(idx);
 						if(idx < 0){
 							this.$store.state.nav.cart.push(item);
 						}
-
 						console.log('item.num',item.num)                                                             
 						localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
 					}
@@ -224,7 +182,6 @@
 				//如何去掉nav选中高亮；
 				$('li').removeClass('chen-active');
 				this.$store.dispatch('chenKeyword', {keyword: this.keyword});
-
 			}
 		}
 	}
