@@ -9,7 +9,7 @@
 				<span class = "chen-icon"><i class="iconfont icon-order"></i></span>
 				<span class = "chen-item">下单</span>
 			</li>
-			<li  class="chen-cooker">
+			<li  class="chen-cooker" @click = "kitchen">
 				<span class = "chen-icon"><i class="iconfont icon-cooker"></i></span>
 				<span class = "chen-item">厨房</span>
 			</li>
@@ -60,6 +60,10 @@
 			},
 			chenFood: function(){
 				router.push('/沙拉');
+			},
+			kitchen: function(){
+				
+				router.push('/client_kitchen')
 			},
 			addEventListener: function(event){
 				if($(event.target).parents("li").hasClass("chen-bell")){
