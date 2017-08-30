@@ -16,22 +16,13 @@ const mutations = {
 	showDetail:(data)=>{
 		console.log(666)
 		var socket = io.connect('ws://localhost:1703');
-		socket.on('ser',function(message){
-			console.log(message)
-			/*console.log(message)
-			for(var i = 0 ;i < state.arr.length;i++){
-				console.log(666,message);
-				for(var j = 0 ; j < message.length;j++){
-					console.log(777,message[0]);
-					if(state.arr[i].name !== message[j].name){
-						console.log(888,message)
-						var newobj = $.extend(message[j],state.arr[i]);
-						state.newarr.push(newobj);
-						console.log(newobj);
-					}
+			socket.on('clientOrder',function(order){
+				var orders = JSON.parse(decodeURI(order));
+				if(orders){
+					console.log(orders);
+					state.newarr = state.newarr.concat(orders);
 				}
-			}*/
-		})
+			}.bind(this))
 		console.log(state.newarr)
 	}
 }

@@ -2,7 +2,7 @@
 	<div class="details">
 		<div id="headers">
 			<span>
-				<router-link to="/detail">
+				<router-link to="/waiter">
 					<i class="el-icon-arrow-left"></i>
 				</router-link>
 			</span>
@@ -57,27 +57,12 @@
 		    }
 		},
 		created(){
-			var num = 0;
-			var socket = io.connect('ws://localhost:1703');
-			socket.on('clientOrder',function(order){
-				var orders = JSON.parse(decodeURI(order));
-				if(orders){
-					console.log(orders);
-					this.tableData = this.tableData.concat(orders);
-					for(var i = 0 ; i < orders ; i++){
-						num += orders[i].num*orders[i].nowPrice;
-					}
-					this.price = num ;
-				}
-			}.bind(this))
-			if(this.$store.state.nav.cart != ''){
-				this.tableData = this.tableData.concat(this.$store.state.nav.cart);
-				for(var i = 0 ; i < this.$store.state.nav.cart.length; i++){
-					num += this.$store.state.nav.cart[i].num*this.$store.state.nav.cart[i].nowPrice;
-
-				}
-				this.price = num ;
+			var num = 0 ;
+			this.tableData = this.tableData.concat(this.$store.state.detail.newarr) ;
+			for(var i = 0 ; i < this.$store.state.detail.newarr.length; i++){
+				num += this.$store.state.detail.newarr[i].num*this.$store.state.detail.newarr[i].nowPrice;
 			}
+			this.price = num ;
 		},
 		methods:{
 			open() {

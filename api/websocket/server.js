@@ -20,8 +20,11 @@ io.on('connection',function(client){
 		io.emit('offer',{status:true})
 	});
 	client.on('order',function(order){
-		console.log(order);
-		io.emit('clientOrder',order)
+		var _order = JSON.parse(decodeURI(order));
+		_order.map((item, idx)=>{
+			item.status = '待接单'
+		})
+		io.emit('clientOrder',encodeURI(JSON.stringify(_order)))
 	});
 	client.on('cooking',function(schedule){
 		console.log(schedule);
