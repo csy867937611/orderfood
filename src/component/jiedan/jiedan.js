@@ -27,7 +27,7 @@ const mutations = {
 		var socket = io.connect('ws://10.3.134.54:1703');
 		console.log(mess)
 
-		// var socket = io.connect(_wsurl);
+		var socket = io.connect(_wsurl);
 
 		socket.emit('cooking', mess);
 		socket.on('kitchen', function(mess){
