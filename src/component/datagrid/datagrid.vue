@@ -4,7 +4,7 @@
       <a href="javascript:" class="btn btn-primary btn-sm" v-if="toolList" v-for="(value,key) in toolList" @click="click(value)">{{value.text ? value.text : key}}</a>
     </div>
     <div style="margin-top: 15px;" class="search">
-      <el-input placeholder="请输入ID/菜名/菜系/描述" v-model="input">
+      <el-input placeholder="请输入ID/菜名/菜系/描述" v-model="input" size="small">
         <el-button slot="append" icon="search" @click="search"></el-button>
       </el-input>
     </div>
@@ -12,7 +12,7 @@
         <el-button  class="toggle" type="primary" @click="toggle" size="small">{{text}}</el-button>
     </div>
     <el-table class="table" :data="dataset" height="560" border style="width: 100%">
-        <el-table-column v-for="(value,key) in dataset[0]" :prop="key" width="150" sortable :label="dictionary[lan][key] || key " :className="key"></el-table-column>
+        <el-table-column v-for="(value,key) in dataset[0]" :prop="key" width="150" sortable :label="dictionary[lan][key] || key " :className="key" align="center" :key="key+value"></el-table-column>
       <!-- <el-table-column
         prop="ID"
         :label="dictionary[lan].ID"
@@ -88,7 +88,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <div class="block">
+    <div class="cyq-block">
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
@@ -103,9 +103,11 @@
 </template>
 
 <script type="text/javascript">
-  import baseurl from '../../assets/common/common.js'
+  import base from'../../assets/common/common.js'
 	import './datagrid.scss'
   import $ from 'jquery'
+
+  var baseurl = base.global.baseurl;
 
 	export default {
 		name: 'datagrid',
@@ -168,7 +170,6 @@
 
       //删除菜品
       remove(evt) {
-        console.log(baseurl)
         var self = this;
         this.$confirm('此操作将永久删除该菜品, 是否继续?', '提示', {
           confirmButtonText: '确定',

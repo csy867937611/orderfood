@@ -1,6 +1,11 @@
 <template>
 	<div class="details">
 		<div id="headers">
+			<span>
+				<router-link to="/waiter">
+					<i class="el-icon-arrow-left"></i>
+				</router-link>
+			</span>
 			<span>消费单</span>
 		</div>
 		<div class="bodys">
@@ -52,15 +57,12 @@
 		    }
 		},
 		created(){
-			var num = 0;
-			if(this.$store.state.nav.cart != ''){
-				this.tableData = this.tableData.concat(this.$store.state.nav.cart);
-				for(var i = 0 ; i < this.$store.state.nav.cart.length; i++){
-					num += this.$store.state.nav.cart[i].num*this.$store.state.nav.cart[i].nowPrice;
-
-				}
-				this.price = num ;
+			var num = 0 ;
+			this.tableData = this.tableData.concat(this.$store.state.detail.newarr) ;
+			for(var i = 0 ; i < this.$store.state.detail.newarr.length; i++){
+				num += this.$store.state.detail.newarr[i].num*this.$store.state.detail.newarr[i].nowPrice;
 			}
+			this.price = num ;
 		},
 		methods:{
 			open() {

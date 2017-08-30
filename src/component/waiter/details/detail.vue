@@ -1,39 +1,44 @@
 <template>
 	<div class="details">
 		<div id="headers">
+			<span>
+				<router-link to="/waiter">
+					<i class="el-icon-arrow-left"></i>
+				</router-link>
+			</span>
 			<span>{{page}}</span>
 		</div>
 		<div class="bodys">
 			<el-table
 		    :data="tableData"
 		    stripe
-		    style="width: 100%">
+		    style="width: 100%"
+		    align="center">
 		    <el-table-column
 		      prop="name"
 		      label="菜名"
-		      width="180">
+		      width="180"
+		      align="center">
 		    </el-table-column>
 		    <el-table-column
-		      prop="schedule"
-		      label="进度">
+		      prop="time"
+		      label="制作时间"
+		      align="center">
 		    </el-table-column>
 		    <el-table-column
-		      prop="require"
-		      label="要求">
+		      prop="remain"
+		      label="库存"
+		      align="center">
 		    </el-table-column>
 		  </el-table>
 		  
 		</div>
 		<div class="footers">
-			<div class="money">
-				<p>
-					<span>应付</span>
-					<span>:</span>
-					<span>{{price}}</span>
-				</p>
-			</div>
+			<router-link to='/schedule' class="money">
+				<span>查看进度</span>
+			</router-link>
 			<router-link to='/paid' class="paid">
-				<span >买单</span>
+				<span>买单</span>
 			</router-link>
 		</div>
 	</div>
@@ -49,32 +54,33 @@
 		data(){
 		      return {
 		        tableData: [],
-		        page:'',
-		        price:''
+		        page:''
 		      }
 		    },
 		methods:{
-			showDetail:function(){
-				console.log(this);
-				this.$store.dispatch('showDetail');
-			},
+			
 			reminder:function(){
 				console.log(666);
 			}
 			
 		},
 		created(){
-			this.page = this.$route.query.obj.id;
-			var number = 0;
-			if(this.$store.state.nav.cart != ''){
+			this.$store.dispatch('showDetail');
+			if(this.$route.query.obj.id){
+				console.log(777);
+				this.page = this.$route.query.obj.id;
+			}else{
+				
+				this.page = '1001';
+			}
+			this.tableData = this.tableData.concat(this.$store.state.detail.newarr) ;
+			/*if(this.$store.state.nav.cart != ''){
 				for(var i = 0 ; i < this.$store.state.nav.cart.length; i++){
 					this.$store.state.nav.cart[i].require = <el-button type="warning">催单</el-button>;
-					number += this.$store.state.nav.cart[i].nowPrice
 				}
-				this.price = number;
 				this.tableData = this.tableData.concat(this.$store.state.nav.cart);
 			}
-			console.log(this.$store.state.nav.cart);
+			console.log(this.$store.state.nav.cart);*/
 		}
 	}
 </script>
