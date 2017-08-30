@@ -1,10 +1,7 @@
 .DS_Store
 node_modules/
 /api/node_modules/
-<<<<<<< HEAD
 
-=======
->>>>>>> c189b4824ac9ed7730cef15f9f90efe95f168f34
 npm-debug.log
 yarn-error.log
 
