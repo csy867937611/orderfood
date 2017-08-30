@@ -23,7 +23,7 @@ const mutations = {
 				var orders = JSON.parse(decodeURI(order));
 				if(orders){
 					console.log(orders);
-					state.newarr = state.newarr.concat(orders);
+					state.newarr = orders;
 				}
 			}.bind(this))
 		console.log(state.newarr)

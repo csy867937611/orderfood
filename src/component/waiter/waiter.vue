@@ -11,7 +11,7 @@
 			</div>
 			<div class="aoh">
 				<ul v-for="(obj,index) in this.$store.state.waiter.arraoh" :ref="obj.id" :id="obj.id">
-					<router-link :to="{path:'detail',query:{obj}}"  @click="message">
+					<router-link :to="{path:'detail',query:{obj}}">
 						<li v-for="(value,key) in obj">
 							<span>{{value}}</span>
 						</li>
@@ -44,6 +44,9 @@
 	import ElementUI from 'element-ui'
 	import 'element-ui/lib/theme-default/index.css'
 	import $ from 'jquery';
+	import wsurl from '../../assets/common/common.js'
+
+	var _wsurl = wsurl.global.wsurl;
 
 	Vue.use(ElementUI) 
 
@@ -55,7 +58,7 @@
 		},
 		created:function(){
 			this.$store.dispatch('date');
-			var socket = io.connect('ws://localhost:1703');
+			var socket = io.connect(_wsurl);
 			socket.on('ser',(message)=>{
 				console.log(message);
 				if(message){

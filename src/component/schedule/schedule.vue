@@ -35,6 +35,9 @@
 	import Vue from 'vue'
 	import ElementUI from 'element-ui'
 	import 'element-ui/lib/theme-default/index.css';
+	import wsurl from '../../assets/common/common.js'
+
+	var _wsurl = wsurl.global.wsurl;
 	export default {
 		data(){
 		    return {
@@ -43,21 +46,27 @@
 		    }
 		},
 		created(){
-			var socket = io.connect('ws://localhost:1703');
-			
+			this.tableData = this.tableData.concat(this.$store.state.detail.newarr);
+			var socket = io.connect(_wsurl);
 			socket.on('kitchen',function(food){
 				var orders = JSON.parse(decodeURI(food));
-				console.log(orders)
-				if(food){
+				console.log(orders);
+				this.tableData = orders;
+				/*if(food){
 					console.log(orders)
+					console.log(this.$store.state.detail.newarr)
 					for(var i = 0 ; i < this.$store.state.detail.newarr.length; i++){
 						if(this.$store.state.detail.newarr[i].name == orders[0].name){
 							this.$store.state.detail.newarr[i].status = '已接单'
 						}
 					}
-					this.tableData = this.tableData.concat(this.$store.state.detail.newarr);
-				}
-			}.bind(this))
+					this.tableData = this.tableData.concat(orders);
+				}*/
+			}.bind(this));
+			socket.on('suc',function(getfood){
+				var _getfood = JSON.parse(decodeURI(getfood));
+				consoe.log(_getfood)
+			})
 		}
 
 	};

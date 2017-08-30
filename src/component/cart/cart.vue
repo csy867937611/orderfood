@@ -35,7 +35,9 @@
 
 <script>
 	import './cart.scss';
+	import wsurl from '../../assets/common/common.js'
 
+	var _wsurl = wsurl.global.wsurl;
 	export default {
 		data: function(){
 			return {
@@ -89,7 +91,7 @@
 			},
 			order: function(){
 				console.log(123)
-				var socket = io.connect('ws://10.3.134.54:1703');
+				var socket = io.connect(_wsurl);
 				var data = this.$store.state.nav.cart;
 				console.log(data)
 				socket.emit('order', encodeURI(JSON.stringify(data)));
