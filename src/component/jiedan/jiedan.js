@@ -12,15 +12,17 @@ const actions = {
  		// console.log('actions')
  		store.commit('jie', n);
  		console.log(store)
+		console.log(111111)
  	}
 }
 
 const mutations = {
 	jie: (data,n) =>{
-		console.log(state.data);
+		// console.log(state.data);
 		var mess = encodeURI(JSON.stringify(state.data))
 		
 		var socket = io.connect('ws://10.3.134.54:1703');
+		console.log(mess)
 		socket.emit('cooking', mess);
 		socket.on('kitchen', function(mess){
 			console.log(JSON.parse(decodeURI(mess)));
