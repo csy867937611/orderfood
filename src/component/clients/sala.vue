@@ -1,13 +1,11 @@
 <template>
     <div>
-        <datagrid api="http://localhost:1000/page" :tools="tools"></datagrid>
+        <datagrid api="http://localhost:1000/search?keyword=沙拉" :tools="tools"></datagrid>
     </div>
 </template>
 
 <script type="text/javascript">
     import datagrid from '../datagrid/datagrid.vue'
-    import base from '../../assets/common/common.js'
-    var baseurl = base.global.baseurl
     import router from '../../router'
 
     export default {

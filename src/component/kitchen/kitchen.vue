@@ -15,7 +15,7 @@
 			<div class="kit-contenter" >
 				<!-- <div class="dingdan" v-for="(value,key) in this.$store.state.nav.category"> -->
 				<div class="dingdan" >
-				<div v-for="(value,key) in this.$store.state.jiedan.receive">
+				<div v-for="(value,key) in this.$store.state.jiedan.data">
 					<p class="ppp" :data-id = "value.ID">
 						 
 						菜品名称:<span>{{value.name}}</span>&nbsp;  
@@ -77,14 +77,14 @@
 				console.log(555);
 			},
 			topover: function(event){
-				// console.log(this.$store.state.jiedan.receive[0].status)
+				console.log(this.$store.state.jiedan.data);
 				var  currentId = $(event.target).parents("p").prev().data('id');
 				this.$store.state.jiedan.data.map((item, idx)=>{
 					if(item.ID == currentId){
 						item.status = '已完成';
 					}
 				})
-
+				this.$store.dispatch('topover', this.$store.state.jiedan.data);
 				console.log('已完成', currentId);
 			}
 			

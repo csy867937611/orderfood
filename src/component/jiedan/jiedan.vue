@@ -5,13 +5,13 @@
 		</div>
 
 		<div class="jiedan-content" v-for="(value, idx) in this.$store.state.jiedan.data">
-		
+			
 				<p class="ppp" :data-id = "value.ID">菜品名称：<span>{{value.name}}</span>  数量：<span>{{value.num}}</span></p>
 				
 			    <p><el-button type="info" @click="jie">接单</el-button>
 			   <!--  <el-button type="warning" @click="footover">售馨</el-button></p> -->
 			    <el-button :plain="true" @click="jindu">进度</el-button></p>
-			    
+			
 			
 		</div>
 
@@ -57,17 +57,18 @@
 				var completeId = $(event.target).parents("p").prev().data('id');
 				this.$store.state.jiedan.data.map((item, idx)=>{
 					if(item.ID == completeId){
-						item.status = '已接单';
-						this.$store.state.jiedan.receive.push(item);
+						item.status = '正在烹饪';
+				console.log(this.$store.state.jiedan.data)
+						
 					}
 				})
 
-				//传菜单状态
 				
-				this.$store.dispatch('jie')
+				this.$store.dispatch('jie');
+				console.log('已接单', completeId);
+				
 
-				console.log('component', completeId);
-				// console.log(this.$store.state.nav.cart[0].name)
+				
 				
 				
 			},

@@ -27,14 +27,14 @@
 	import $ from 'jquery';
 	import wsurl from '../../assets/common/common.js'
 
-	var _wsurl = wsurl.global.wsurl;
+	var _iourl = wsurl.global.iourl;
 
 	export default {
 		methods: {
 			chenCallWaiter: function(){
 				this.$store.state.home.show = true;
 
-				var socket = io.connect(_wsurl);
+				var socket = io.connect(_iourl);
 				var data = {table: 1}
 				socket.emit('server', data);
 
