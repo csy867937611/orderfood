@@ -27,9 +27,9 @@
 				</div>
 				<div class = "chen-hot" v-if = "value.isFamous=='Y'"><i class="iconfont icon-hot"></i></div>
 				<div class="chen-details">
-					<p class="chen-name">{{value.name}}</p>
-					<p class = "chen-price">价格：{{value.nowPrice}}</p>
-					<p class = "chen-time">工时：{{value.time}}分钟</p>
+					<p class="chen-name chen-p">{{value.name}}</p>
+					<p class = "chen-price chen-p">价格：{{value.nowPrice}}</p>
+					<p class = "chen-time chen-p">工时：{{value.time}}分钟</p>
 				</div>
 				<div class="chen-car" :data-id = "value.ID" >
 					<p class="chen-sub" @click = "sup" v-show = "value.num > 0"><i class="iconfont icon-reduce1"></i></p>

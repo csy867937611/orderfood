@@ -62,6 +62,7 @@
 				router.push('/沙拉');
 			},
 			kitchen: function(){
+				
 				router.push('/client_kitchen')
 			},
 			addEventListener: function(event){

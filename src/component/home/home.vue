@@ -2,7 +2,7 @@
 	<div class = "chen-body">
 		<div class="chen-header">
 	      <h1>小蚂蚁餐厅</h1>
-	      <div class = "chen-bell" @click = "callWaiter"><i class="iconfont icon-hot"></i></div>
+	      <!-- <div class = "chen-bell" @click = "callWaiter"><i class="iconfont icon-hot"></i></div> -->
 	    </div>
 	    <div class="chen-content">
 	   		<router-view></router-view>

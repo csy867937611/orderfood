@@ -8,9 +8,9 @@
 					<img :src="'./src/assets/imgs/' + value.imgurl" alt="" >
 				</div>
 				<div class="chen-details">
-					<p class="chen-name">{{value.name}}</p>
-					<p class = "chen-price">价格：{{value.nowPrice}}</p>
-					<p class = "chen-time">工时：{{value.time}}分钟</p>
+					<p class="chen-name chen-p">{{value.name}}</p>
+					<p class = "chen-price chen-p">价格：{{value.nowPrice}}</p>
+					<p class = "chen-time chen-p">工时：{{value.time}}分钟</p>
 					<span class = "chen-sum">小计：{{value.nowPrice*value.num}}元</span>
 				</div>
 				<div class="chen-car" :data-id = "value.ID" >
@@ -88,27 +88,31 @@
 				});
 			},
 			order: function(){
-				console.log(123)
-				var socket = io.connect('ws://10.3.134.54:1703');
-				var data = this.$store.state.nav.cart;
-				console.log(data)
-				socket.emit('order', encodeURI(JSON.stringify(data)));
-			    socket.on('clientOrder', (data)=> {
-			        console.log(JSON.parse(decodeURI(data)));
-			        this.$store.state.nav.client = JSON.parse(decodeURI(data));
-			    });
+				
+				
+				if(this.$store.state.nav.cart.length){
+					var socket = io.connect('ws://10.3.134.54:1703');
+					var data = this.$store.state.nav.cart;
+
+					console.log(9999999);
+					//清空数组、清空localStorage;
+					this.$store.state.nav.cart = [];
+					localStorage.cart = '';
+					this.total = 0;
+
+					//发送数据到服务端；
+					socket.emit('order', encodeURI(JSON.stringify(data)));
+
+					//监听服务端发过来的数据；
+				    socket.on('clientOrder', (data)=> {
+				        console.log(JSON.parse(decodeURI(data)));
+				        this.$store.state.nav.client = JSON.parse(decodeURI(data));
+				    });
+				}
+
 			}
 		},
 		created: function(){
-			var socket = io.connect('ws://10.3.134.54:1703');
-
-		 	socket.on('kitchen', function(data){
-		 		var res = JSON.parse(decodeURI(data));
-		 		console.log(res);
-		 		// this.$store.state.nav.client = res;
-		    	
-		    });
-		
 			var cart;
 			if(localStorage.cart){
 				cart = JSON.parse(localStorage.cart);
