@@ -21,11 +21,20 @@ const actions = {
 const mutations = {
 	jie: (data,n) =>{
 		var mess = encodeURI(JSON.stringify(state.data))
+
+		
+
+
 		var socket = io.connect(_wsurl);
 		socket.emit('cooking', mess);
 		socket.on('kitchen', function(mess){
+
 			state.data = JSON.parse(decodeURI(mess));
 			console.log(11111,'mess')
+
+			console.log(JSON.parse(decodeURI(mess)));
+			
+
 		})
 		
 	},

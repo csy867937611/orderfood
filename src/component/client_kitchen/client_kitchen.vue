@@ -2,7 +2,7 @@
 	<div class="chen-client">
 		<div class="title-box">
 			
-			<p class = client-title>订单进度详情</p>
+			<p class = client-title>订单进度详情{{this.$store.state.home.time[0]}}</p>
 		</div>
 		<div class="chen-dish">
 			
@@ -15,7 +15,8 @@
 					<p class="chen-name chen-p">{{value.name}}</p>
 					<p class = "chen-price chen-p">价格：{{value.nowPrice}}</p>
 					<p class = "chen-time chen-p">工时：{{value.time}}分钟</p>
-					<span class = "chen-sum">{{test(30)}}</span>
+					<span class = "chen-sum"></span>
+					<p></p>
 				</div>
 				<div class="chen-step">
 					<el-steps :space="100" :active="value.status == '待接单' ? 1 : value.status == '正在烹饪' ? 2 : 3" finish-status="success">
@@ -35,6 +36,9 @@
 </template>
 <script>
 	import './client_kitchen.scss';
+	import wsurl from '../../assets/common/common.js'
+
+	var _iourl = wsurl.global.iourl;
 	export default {
 		data: function(){
 			return {
@@ -45,9 +49,21 @@
 			chenDelete: function(event){
 				var currentId = $(event.target).parents('.chen-food').data('id');
 				console.log(123, currentId);
+				var socket = io.connect(_iourl);
 				this.$store.state.nav.client.map((item, idx, self)=>{
 					if(item.ID == currentId){
 						this.$store.state.nav.client.splice(idx, 1);
+
+						
+						//更新数据到服务端；
+						console.log('cooking')
+						socket.emit('cooking', encodeURI(JSON.stringify(this.$store.state.nav.client)));
+
+						//监听服务端发过来的数据；
+					    socket.on('kitchen', (data)=> {
+					        console.log(JSON.parse(decodeURI(data)));
+					        this.$store.state.nav.client = JSON.parse(decodeURI(data));
+					    });
 						return;
 					}
 				})
