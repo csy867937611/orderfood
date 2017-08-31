@@ -15,13 +15,20 @@
 					<p class="chen-name chen-p">{{value.name}}</p>
 					<p class = "chen-price chen-p">价格：{{value.nowPrice}}</p>
 					<p class = "chen-time chen-p">工时：{{value.time}}分钟</p>
-					<span class = "chen-sum">{{value.status}}</span>
+					<span class = "chen-sum">{{test(30)}}</span>
 				</div>
-				<!-- <div class="chen-car" :data-id = "value.ID" >
-					<p class="chen-sub" v-show = "value.num > 0"><i class="iconfont icon-reduce1"></i></p>
-					<input type="number" class="chen-num" v-show = "value.num > 0" :value = "value.num" />
-					<p class="chen-add" ><i class="iconfont icon-add1"></i></p>
-				</div> -->
+				<div class="chen-step">
+					<el-steps :space="100" :active="value.status == '待接单' ? 1 : value.status == '正在烹饪' ? 2 : 3" finish-status="success">
+					  	<el-step title="待接单"></el-step>
+					  	<el-step title="烹饪中"></el-step>
+					  	<el-step title="已完成"></el-step>
+					</el-steps>
+				</div>
+			<!-- 	<div class="chen-car" :data-id = "value.ID" >
+				<p class="chen-sub" v-show = "value.num > 0"><i class="iconfont icon-reduce1"></i></p>
+				<input type="number" class="chen-num" v-show = "value.num > 0" :value = "value.num" />
+				<p class="chen-add" ><i class="iconfont icon-add1"></i></p>
+			</div> -->
 			</div>
 		</div>
 	</div>
@@ -29,6 +36,11 @@
 <script>
 	import './client_kitchen.scss';
 	export default {
+		data: function(){
+			return {
+				num:0
+			}
+		},
 		methods: {
 			chenDelete: function(event){
 				var currentId = $(event.target).parents('.chen-food').data('id');
@@ -39,7 +51,13 @@
 						return;
 					}
 				})
+			},
+			test: function(n){
+				console.log('test')
 			}
+		},
+		created: function(){
+
 		}
 	}
 </script>

@@ -28,7 +28,9 @@
 	import './home.scss';
 	import wsurl from '../../assets/common/common.js'
 
-	var _wsurl = wsurl.global.wsurl;
+
+	var _iourl = wsurl.global.iourl;
+
 	export default {
 		components: {
 			ChenNav,
@@ -43,13 +45,20 @@
 				this.$store.state.home.show = false;
 			}
 		},
-		created:function(){
-			var socket = io.connect(_wsurl);
-			socket.on('suc', (data)=> {
+		created: function(){
+			var socket = io.connect(_iourl);
+			//监听服务端发过来的数据；
+		    socket.on('kitchen', (data)=> {
 		        console.log(1234, JSON.parse(decodeURI(data)));
 		        var res = JSON.parse(decodeURI(data));
 		        this.$store.state.nav.client = res;
 		    });
+		    socket.on('suc', (data)=> {
+		        console.log(1234, JSON.parse(decodeURI(data)));
+		        var res = JSON.parse(decodeURI(data));
+		        this.$store.state.nav.client = res;
+		    });
+
 		}
 
 	}
