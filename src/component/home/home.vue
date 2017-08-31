@@ -28,6 +28,7 @@
 	import './home.scss';
 	import wsurl from '../../assets/common/common.js'
 
+
 	var _iourl = wsurl.global.iourl;
 
 	export default {
@@ -66,5 +67,6 @@
 		    });
 
 		}
+
 	}
 </script>

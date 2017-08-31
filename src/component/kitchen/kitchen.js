@@ -1,6 +1,8 @@
 import http from '../../utils/HttpClient';
 import Vue from 'vue';
+import wsurl from '../../assets/common/common.js'
 
+var _wsurl = wsurl.global.wsurl;
 
 
 const state = {
@@ -26,7 +28,7 @@ const mutations = {
 		console.log(1111111111111)
 		
 
-		var socket = io.connect('ws://10.3.134.54:1703');
+		var socket = io.connect(_wsurl);
 		socket.on('chilken', function(message){
 			
 		console.log(message)
@@ -36,7 +38,9 @@ const mutations = {
 	topover: (data, n)=>{
 
 		var abc = encodeURI(JSON.stringify(n));
-		var socket = io.connect('ws://localhost:1703');
+
+		var socket = io.connect(_wsurl);
+
 		socket.emit('success', abc);
 		socket.on('suc', function(abc){
 			console.log(JSON.parse(decodeURI(abc)));

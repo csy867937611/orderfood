@@ -24,9 +24,6 @@ const mutations = {
 		var mess = encodeURI(JSON.stringify(state.data))
 		
 
-		var socket = io.connect('ws://localhost:1703');
-		console.log(mess)
-
 		var socket = io.connect(_wsurl);
 
 		socket.emit('cooking', mess);
