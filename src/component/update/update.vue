@@ -1,16 +1,16 @@
 <template>
   <div>
       <el-form :inline="true" ref="updateForm" :rules="rules" :model="editData" class="demo-form-inline">
-          <el-form-item label="ID:">
+          <el-form-item label="菜品编号:">
               <el-input v-model="editData.ID"  ></el-input>
           </el-form-item>
-          <el-form-item label="name:" prop="name">
+          <el-form-item label="菜品名称:" prop="name">
               <el-input v-model="editData.name"   ></el-input>
           </el-form-item>
-          <el-form-item label="description:">
+          <el-form-item label="描述:">
               <el-input v-model="editData.description"  ></el-input>
           </el-form-item>
-          <el-form-item label="category:" prop="category">
+          <el-form-item label="菜系:" prop="category">
             <el-select v-model="editData.category"  >
               <el-option
                 v-for="item in options"
@@ -20,22 +20,22 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="nowPrice:" prop="nowPrice">
+          <el-form-item label="销售价:" prop="nowPrice">
               <el-input v-model="editData.nowPrice"   ></el-input>
           </el-form-item>
-          <el-form-item label="oldPrice:">
+          <el-form-item label="原价:">
               <el-input v-model="editData.oldPrice" ></el-input>
           </el-form-item>
-          <el-form-item label="discount:">
+          <el-form-item label="折扣:">
               <el-input v-model="editData.discount" ></el-input>
           </el-form-item>
-          <el-form-item label="time:" prop="time">
+          <el-form-item label="制作时间:" prop="time">
               <el-input v-model="editData.time"   ></el-input>
           </el-form-item>
-          <el-form-item label="sales:">
+          <el-form-item label="销售量:">
               <el-input v-model="editData.sales"   ></el-input>
           </el-form-item>
-          <el-form-item label="isNew:">
+          <el-form-item label="是否新品:">
             <el-select v-model="editData.isNew">
               <el-option
                 v-for="item in option"
@@ -45,7 +45,7 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="isFmous:">
+          <el-form-item label="是否招牌菜:">
             <el-select v-model="editData.isFmous" >
               <el-option
                 v-for="item in option"
@@ -55,13 +55,13 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="imgurl:" prop="imgurl">
+          <el-form-item label="图片路径:" prop="imgurl">
               <el-input v-model="editData.imgurl"  ></el-input>
           </el-form-item>
-          <el-form-item label="remain:">
+          <el-form-item label="库存量:">
             <el-input v-model="editData.remain" ></el-input>
           </el-form-item>
-          <el-form-item label="limit1:">
+          <el-form-item label="是否限量:">
             <el-select v-model="editData.limit1" >
               <el-option
                 v-for="item in option"
@@ -71,7 +71,7 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="isSellOut:">
+          <el-form-item label="是否买完:">
             <el-select v-model="editData.isSellOut" >
               <el-option
                 v-for="item in option"
@@ -81,7 +81,7 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="pass100:">
+          <el-form-item label="满100减免:">
             <el-select v-model="editData.pass100" >
               <el-option
                 v-for="item in option"
@@ -91,7 +91,7 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="pass200:">
+          <el-form-item label="满200减免:">
             <el-select v-model="editData.pass200" >
               <el-option
                 v-for="item in option"
@@ -101,7 +101,7 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="promotion:">
+          <el-form-item label="是否促销:">
             <el-select v-model="editData.promotion" >
               <el-option
                 v-for="item in option"
@@ -159,6 +159,7 @@
           value: 'false',
           label: 'false'
         }],
+        //Element-UI验证规则
         rules:{
           name:[{
               required: true, message: '请输入活动名称', trigger: 'blur' 
@@ -178,6 +179,7 @@
         }
         }
     },
+    //获取传来的数据
     created(){
         this.editData = this.$route.params.data
     },
@@ -185,6 +187,7 @@
         update(){
             console.log(this.editData);
             this.$refs.updateForm.validate((valid)=>{
+              //验证通过就更新数据
                 if(valid){
                     $.post(baseurl + 'updateProduct', this.editData,function(res) {
                     console.log(res)
@@ -201,6 +204,7 @@
                 }
             })
         },
+        //取消=>返回界面
         cancel() {
             this.$router.push({name:'clients'})
         }

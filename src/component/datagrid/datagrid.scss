@@ -18,13 +18,13 @@
 	min-width: 400px;
 	z-index:999;
 }
-.toggle{
+.cyq-datagrid-toggle{
 	position:fixed;
 	top:53px;
 	right:200px;
 	z-index:999;
 	background: #1ab394;
 }
-.toggle:hover,.toggle:active,.primary,.toggle:focus{
+.cyq-datagrid-toggle:hover,.cyq-datagrid-toggle:active,.primary,.cyq-datagrid-toggle:focus{
 	background: #1ab394;
 }

@@ -2,7 +2,7 @@
 	<div :class="['dk-nav-content', navOpen ? '' : 'toggle']" ref="dknav">
 		<ul class="dk-nav">
 			<li class="dk-nav-item nav-toggle">
-				<a class="btn btn-primary" href="javascript:" >
+				<a class="btn btn-primary" href="javascript:" @click="toggleNav">
 					<i class="fa fa-bars"></i> 
 				</a>
 			</li>
@@ -40,7 +40,7 @@
 	export default {
 		data(){
 			return {
-				navOpen: true
+				navOpen: true,
 			}
 		},
 		methods:{
@@ -56,6 +56,19 @@
 					self = self.closest('.dk-nav-item');
 				}
 				self.toggleClass('active');
+				console.log()
+				$('.dk-content').animate({left:'229px'})
+			},
+			toggleNav(event){
+				if(this.navOpen){
+					this.navOpen = !this.navOpen
+					$('.dk-nav-item').removeClass('active');
+					$('.dk-content').animate({left:'50px'})
+				}else{
+					this.navOpen = true
+					$('dk-nav-content').removeClass('toggle')
+					$('.dk-content').animate({left:'229px'})
+				}
 			}
 		}
 	}

@@ -9,9 +9,9 @@
       </el-input>
     </div>
     <div>
-        <el-button  class="toggle" type="primary" @click="toggle" size="small">{{text}}</el-button>
+        <el-button  class="cyq-datagrid-toggle" type="primary" @click="toggle" size="small">{{text}}</el-button>
     </div>
-    <el-table class="table" :data="dataset" height="560" border style="width: 100%">
+    <el-table class="table" :data="dataset" height="560" border stripe style="width: 100%">
         <el-table-column v-for="(value,key) in dataset[0]" :prop="key" width="150" sortable :label="dictionary[lan][key] || key " :className="key" align="center" :key="key+value"></el-table-column>
       <!-- <el-table-column
         prop="ID"
@@ -80,7 +80,7 @@
       </el-table-column> -->
       <el-table-column
         fixed="right"
-        label="操作"
+        :label="dictionary[lan].handle || 'handle'"
         width="100">
         <template scope="scope">
           <el-button @click="update" type="text" size="small">修改</el-button>
@@ -118,7 +118,10 @@
 		data(){
 			return {
         dataset: [],
-        dictionary: {},
+        dictionary: {
+          cn:{handle:''},
+          en:{handle:''}
+        },
         text: 'English',
         lan: 'cn',
         toolList: null,
@@ -135,7 +138,6 @@
           this.dataset = res.data
           this.qty = Number(res.qty)
           this.total = res.total
-          this.page = Number(res.page)
           })    
         },
       }
@@ -203,7 +205,7 @@
 
       handleSizeChange(val) {
         //console.log(`每页 ${val} 条`);
-        this.getData({qty:val,page:this.page})
+        this.getData({qty:val,page:1})
       },
 
       handleCurrentChange(val) {
@@ -212,17 +214,16 @@
       }
     },
     created(){
-        let self = this
+      const self = this
       $.get(baseurl + 'src/assets/common/dictionary.json',function(res){
-        self.dictionary = res
-      })
+          self.dictionary = res
+        })
       if(this.api){
           //console.log(this.api)
           $.get(this.api,(res)=>{
               this.dataset = res.data
               this.qty = Number(res.qty)
               this.total = res.total
-              this.page = Number(res.page)
           })       
       }
       if(this.tools){

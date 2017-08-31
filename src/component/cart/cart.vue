@@ -37,7 +37,7 @@
 	import './cart.scss';
 	import wsurl from '../../assets/common/common.js'
 
-	var _iourl = wsurl.global.iourl;
+	var _iourl = wsurl.global.wsurl;
 	export default {
 		data: function(){
 			return {
@@ -92,7 +92,7 @@
 			order: function(){	
 				
 				if(this.$store.state.nav.cart.length){
-					var socket = io.connect(iourl);
+					var socket = io.connect(_iourl);
 					var data = this.$store.state.nav.cart;
 
 					console.log(9999999);
