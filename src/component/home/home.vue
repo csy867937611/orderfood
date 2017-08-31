@@ -50,11 +50,18 @@
 		    socket.on('kitchen', (data)=> {
 		        console.log(1234, JSON.parse(decodeURI(data)));
 		        var res = JSON.parse(decodeURI(data));
+		        res.map((item, idx)=>{
+		        	if(item.status == '正在烹饪'){
+		        		console.log("正在烹饪");
+		        		 this.$store.dispatch('timer',item);
+		        	}
+		        })
 		        this.$store.state.nav.client = res;
 		    });
 		    socket.on('suc', (data)=> {
 		        console.log(1234, JSON.parse(decodeURI(data)));
 		        var res = JSON.parse(decodeURI(data));
+
 		        this.$store.state.nav.client = res;
 		    });
 

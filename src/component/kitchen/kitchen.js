@@ -36,7 +36,7 @@ const mutations = {
 	topover: (data, n)=>{
 
 		var abc = encodeURI(JSON.stringify(n));
-		var socket = io.connect('ws://10.3.134.54:1703');
+		var socket = io.connect('ws://localhost:1703');
 		socket.emit('success', abc);
 		socket.on('suc', function(abc){
 			console.log(JSON.parse(decodeURI(abc)));

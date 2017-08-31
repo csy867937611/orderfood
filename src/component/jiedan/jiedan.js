@@ -24,7 +24,7 @@ const mutations = {
 		var mess = encodeURI(JSON.stringify(state.data))
 		
 
-		var socket = io.connect('ws://10.3.134.54:1703');
+		var socket = io.connect('ws://localhost:1703');
 		console.log(mess)
 
 		var socket = io.connect(_wsurl);
@@ -32,6 +32,7 @@ const mutations = {
 		socket.emit('cooking', mess);
 		socket.on('kitchen', function(mess){
 			console.log(JSON.parse(decodeURI(mess)));
+			state.data = JSON.parse(decodeURI(mess));
 		})
 
 		// socket.on('clientOrder', function(data){
