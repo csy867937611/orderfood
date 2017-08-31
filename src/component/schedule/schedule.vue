@@ -52,14 +52,7 @@
 				var orders = JSON.parse(decodeURI(food));
 				console.log(orders);
 				this.tableData = orders;
-				for(var i = 0 ; i < orders.length; i++){
-					if(orders[i].status == '已完成'){
-						this.$alert(orders[i].name+'上菜','注意', {confirmButtonText:'确定' ,callback(){}
-						})
-					}
-					
-					
-				}
+				
 				/*if(food){
 					console.log(orders)
 					console.log(this.$store.state.detail.newarr)
@@ -71,10 +64,17 @@
 					this.tableData = this.tableData.concat(orders);
 				}*/
 			}.bind(this));
-			socket.on('suc',function(getfood){
-				var _getfood = JSON.parse(decodeURI(getfood));
-				console.log(_getfood)
-			})
+			socket.on('suc', (data)=> {
+		        console.log(1234, JSON.parse(decodeURI(data)));
+		        var res = JSON.parse(decodeURI(data));
+		        this.tableData = res;
+		        for(var i = 0 ; i < res.length; i++){
+					if(res[i].status == '已完成'){
+						this.$alert(res[i].name+'上菜','注意', {confirmButtonText:'确定' ,callback(){}
+						})
+					}	
+				}
+		    });
 		}
 
 	};

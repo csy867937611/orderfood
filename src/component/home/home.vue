@@ -26,6 +26,9 @@
 	// import foodlist from '../foodlist/foodlist.vue';
 	import Foot from '../footer/footer.vue';
 	import './home.scss';
+	import wsurl from '../../assets/common/common.js'
+
+	var _wsurl = wsurl.global.wsurl;
 	export default {
 		components: {
 			ChenNav,
@@ -39,6 +42,15 @@
 				console.log('chenClose');
 				this.$store.state.home.show = false;
 			}
+		},
+		created:function(){
+			var socket = io.connect(_wsurl);
+			socket.on('suc', (data)=> {
+		        console.log(1234, JSON.parse(decodeURI(data)));
+		        var res = JSON.parse(decodeURI(data));
+		        this.$store.state.nav.client = res;
+		    });
 		}
+
 	}
 </script>

@@ -37,7 +37,7 @@
 	import './cart.scss';
 	import wsurl from '../../assets/common/common.js'
 
-	var _iourl = wsurl.global.iourl;
+	var _iourl = wsurl.global.wsurl;
 	export default {
 		data: function(){
 			return {
