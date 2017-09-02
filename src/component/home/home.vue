@@ -49,21 +49,44 @@
 			var socket = io.connect(_iourl);
 			//监听服务端发过来的数据；
 		    socket.on('kitchen', (data)=> {
-		        console.log(1234, JSON.parse(decodeURI(data)));
+		       
 		        var res = JSON.parse(decodeURI(data));
 		        res.map((item, idx)=>{
 		        	if(item.status == '正在烹饪'){
-		        		console.log("正在烹饪");
-		        		 this.$store.dispatch('timer',item);
+		        		 // this.$store.dispatch('timer',item);
 		        	}
 		        })
 		        this.$store.state.nav.client = res;
 		    });
 		    socket.on('suc', (data)=> {
-		        console.log(1234, JSON.parse(decodeURI(data)));
 		        var res = JSON.parse(decodeURI(data));
 
 		        this.$store.state.nav.client = res;
+		    });
+
+		    //监听服务端发过来的数据；
+		    socket.on('clientOrderAdd', (data)=> {
+		        console.log(JSON.parse(decodeURI(data)));
+		       
+		        var res = JSON.parse(decodeURI(data));
+		        res.forEach((item, idx)=>{
+		        	var num = 0;
+		        	for(var item2 of this.$store.state.nav.client){
+		        		num++;
+		        		if(item.ID == item2.ID && item2.status == '待接单'){
+		        			console.log('kkk',item2.num, item.num)
+		        			item2.num += item.num;
+		        			return ;
+
+		        		} else {
+		        			if(num == this.$store.state.nav.client.length){
+		        				console.log('push',item2.num, item.num)
+		        				this.$store.state.nav.client.push(item);
+		        				return;
+		        			}
+		        		}
+		        	}
+		        })
 		    });
 
 		}

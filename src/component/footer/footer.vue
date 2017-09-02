@@ -19,6 +19,7 @@
 			</li>
 		</ul>
 		<div class="chen-qty" v-show="this.$store.state.nav.cart.length > 0">{{this.$store.state.nav.cart.length}}</div>
+		<div class="chen-client-qty" v-show="this.$store.state.nav.client.length > 0">{{this.$store.state.nav.client.length}}</div>
 	</div>
 </template>
 <script>
@@ -38,12 +39,8 @@
 				var data = {table: 1}
 				socket.emit('server', data);
 
-				socket.on('ser', function (data) {
-			        console.log(data);
-			        // socket.emit('server', { my: 123 });
-			    });
 			    socket.on('offer', data=>{
-			    	console.log(data)
+			    	
 			    	if(data.status){
 
 				    	this.$store.state.home.show = false;
@@ -70,7 +67,6 @@
 			},
 			addEventListener: function(event){
 				if($(event.target).parents("li").hasClass("chen-bell")){
-					console.log('chen-bell');
 					return;
 				}
 				$(event.target).parents("li").addClass("color").siblings().removeClass("color");

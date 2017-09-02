@@ -33,7 +33,7 @@
 			color: yellow;
 		}
 	}
-	.chen-qty{
+	.chen-qty, .chen-client-qty{
 		width: 0.4rem;
 		height: 0.4rem;
 		border-radius: 50%;
@@ -41,7 +41,12 @@
 		background: red;
 		color: #fff;
 		position: fixed;
-		left: 40%;
 		bottom: 6%;
 		text-align: center;
+	}
+	.chen-qty{
+		left: 40%;
+	}
+	.chen-client-qty{
+		right: 30%;
 	}

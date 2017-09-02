@@ -46,6 +46,11 @@
 				console.log(JSON.parse(decodeURI(mess)));
 				var data = JSON.parse(decodeURI(mess))
 				this.$store.state.jiedan.data = data;
+			});
+			socket.on('kitchen', (mess)=>{
+				console.log(JSON.parse(decodeURI(mess)));
+				var data = JSON.parse(decodeURI(mess))
+				this.$store.state.jiedan.data = data;
 			})
 		},
 		methods: {

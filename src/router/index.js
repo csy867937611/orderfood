@@ -16,6 +16,7 @@ import update from '../component/update/update.vue'
 import paid from '../component/paid/paid.vue';
 
 import client_kitchen from '../component/client_kitchen/client_kitchen.vue';
+import view_kitchen from '../component/view_kitchen/view_kitchen.vue';
 
 
 import schedule from '../component/schedule/schedule.vue';
@@ -54,7 +55,8 @@ const router = new VueRouter({
 		{path:'/paid',component:paid},
 		{path:'/kitchen',component:kitchen},
 		{path:'/jiedan',component:jiedan},
-		{path:'/schedule',component:schedule}
+		{path:'/schedule',component:schedule},
+		{path:'/view',component:view_kitchen}
 
 	]
 })

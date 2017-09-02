@@ -19,11 +19,13 @@
 				font-size: 0.38rem;
 				color: #000;
 				background: #ccc;
+				border-radius: 0.1rem;
 			}
 		}
 		.chen-dish{
 			overflow-x: hidden;
 			height: 100%;
+			padding: 0.2rem;
 			.chen-food{
 				width: 100%;
 				box-sizing: border-box;
@@ -31,6 +33,10 @@
 				height: 3.6rem;
 				position: relative;
 				padding: 0.2rem;
+				border-radius: 0.1rem;
+				box-shadow: 0 0.08rem 0.1rem grey;
+				margin-bottom: 0.2rem;
+				background: #fff;
 				.chen-img{
 					width: 40%;
 					height: 1.78rem;
