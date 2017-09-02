@@ -10,9 +10,9 @@
 				
 			    <p><el-button type="info" @click="jie">接单</el-button>
 			   <!--  <el-button type="warning" @click="footover">售馨</el-button></p> -->
-			    <el-button :plain="true" @click="jindu">进度</el-button></p>
-			
-			
+
+			    <el-button :plain="true" @click="topover">上菜</el-button></p>
+		
 		</div>
 
 		<div class="jiedan-footder">
@@ -43,7 +43,6 @@
 		created: function(){
 			var socket = io.connect(_wsurl);
 			socket.on('clientOrder', (mess)=>{
-				console.log(JSON.parse(decodeURI(mess)));
 				var data = JSON.parse(decodeURI(mess))
 				this.$store.state.jiedan.data = data;
 			});
@@ -55,37 +54,38 @@
 		},
 		methods: {
 			jie: function(event){
-				console.log(this.$store.state.jiedan.data)
-				// console.log($(event.target).parents("p").prev().find("span").eq(0).text())
-				// console.log($(event.target).parents("p").prev().find("span").eq(1).text())
-				
+				console.log('12321',this);
 				var completeId = $(event.target).parents("p").prev().data('id');
 				this.$store.state.jiedan.data.map((item, idx)=>{
 					if(item.ID == completeId){
 						item.status = '正在烹饪';
-				console.log(this.$store.state.jiedan.data)
-						
 					}
 				})
+				console.log($(event.target).parents()[0]);
+				$(event.target).parents().prop("disabled", true);
 
+				
 				
 				this.$store.dispatch('jie');
 				console.log('已接单', completeId);
-				
 
-				
-				
+				this.$message('接单成功');
 				
 			},
 
-			jindu: function(){
-				console.log(router)
-				router.push('/kitchen')
-			}
+			topover: function(event){
+				var  currentId = $(event.target).parents("p").prev().data('id');
+				this.$store.state.jiedan.data.map((item, idx)=>{
+					if(item.ID == currentId){
+						item.status = '已完成';
+					}
+				})
+				this.$store.dispatch('topover');
+				console.log('已完成', currentId);
+
+				this.$message('制作完成');
+			},
 		}
-
-
-		
 	}
 
 </script>

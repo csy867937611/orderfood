@@ -1,16 +1,16 @@
 <template>
     <div>
         <el-form :inline="true" ref="cyqform" :rules="rules" :model="editData" class="demo-form-inline">
-            <el-form-item label="ID:" prop="ID">
-                <el-input v-model="editData.ID"  placeholder="ID" ></el-input>
+            <el-form-item label="菜品编号" prop="ID">
+                <el-input v-model="editData.ID"  placeholder="菜品编号" ></el-input>
             </el-form-item>
-            <el-form-item label="name:" prop="name">
+            <el-form-item label="菜品名称:" prop="name">
                 <el-input v-model="editData.name"  placeholder="菜名" ></el-input>
             </el-form-item>
-            <el-form-item label="description:">
+            <el-form-item label="描述:">
                 <el-input v-model="editData.description"  placeholder="描述"></el-input>
             </el-form-item>
-            <el-form-item label="category:" prop="category">
+            <el-form-item label="菜系:" prop="category">
                 <el-select v-model="editData.category"  placeholder="请选择" >
                     <el-option
                       v-for="item in options"
@@ -20,22 +20,22 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="nowPrice:" prop="nowPrice">
+            <el-form-item label="销售价:" prop="nowPrice">
                 <el-input v-model="editData.nowPrice"  placeholder="销售价" ></el-input>
             </el-form-item>
-            <el-form-item label="oldPrice:">
+            <el-form-item label="原价:">
                 <el-input v-model="editData.oldPrice" placeholder="原价"></el-input>
             </el-form-item>
-            <el-form-item label="discount:">
+            <el-form-item label="折扣:">
                 <el-input v-model="editData.discount" placeholder="折扣"></el-input>
             </el-form-item>
-            <el-form-item label="time:" prop="time">
+            <el-form-item label="制作时间:" prop="time">
                 <el-input v-model="editData.time" name="time" placeholder="制作时间:多少分钟" required></el-input>
             </el-form-item>
-            <el-form-item label="sales:">
+            <el-form-item label="销售量:">
                 <el-input v-model="editData.sales"  name="sales" placeholder="月售量" required></el-input>
             </el-form-item>
-            <el-form-item label="isNew:">
+            <el-form-item label="是否新品:">
                 <el-select v-model="editData.isNew" placeholder="请选择">
                     <el-option
                       v-for="item in option"
@@ -45,7 +45,7 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="isFmous:">
+            <el-form-item label="是否招牌菜:">
                 <el-select v-model="editData.isFmous" placeholder="请选择">
                     <el-option
                       v-for="item in option"
@@ -55,13 +55,13 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="imgurl:" prop="imgurl">
+            <el-form-item label="图片路径:" prop="imgurl">
                 <el-input v-model="editData.imgurl" placeholder="图片路径" ></el-input>
             </el-form-item>
-            <el-form-item label="remain:">
+            <el-form-item label="库存:">
                 <el-input v-model="editData.remain" placeholder="库存量"></el-input>
             </el-form-item>
-            <el-form-item label="limit1:">
+            <el-form-item label="是否限量:">
                 <el-select v-model="editData.limit1" placeholder="请选择">
                     <el-option
                       v-for="item in option"
@@ -71,7 +71,7 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="isSellOut:">
+            <el-form-item label="是否买完:">
                 <el-select v-model="editData.isSellOut" placeholder="请选择">
                     <el-option
                       v-for="item in option"
@@ -81,7 +81,7 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="pass100:">
+            <el-form-item label="满100减免:">
                 <el-select v-model="editData.pass100" placeholder="请选择">
                     <el-option
                       v-for="item in option"
@@ -91,7 +91,7 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="pass200:">
+            <el-form-item label="满200减免:">
                 <el-select v-model="editData.pass200" placeholder="请选择">
                     <el-option
                       v-for="item in option"
@@ -101,7 +101,7 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="promotion:">
+            <el-form-item label="是否促销:">
                 <el-select v-model="editData.promotion" placeholder="请选择">
                     <el-option
                       v-for="item in option"
@@ -199,7 +199,7 @@
             }
         },
         created(){
-            // this.$parent.$emit('dk','hehe')
+            console.log(this)
             var self = this;
             var tools = {
                 add: {

@@ -11,32 +11,41 @@ const state = {
 
 const actions = {
  	jie: (store, n)=>{
- 		// console.log('actions')
  		store.commit('jie', n);
- 		console.log(store)
-		console.log(111111)
+ 	},
+ 	topover: (store, n)=>{
+ 		store.commit('topover', n);
  	}
 }
 
 const mutations = {
 	jie: (data,n) =>{
-		// console.log(state.data);
 		var mess = encodeURI(JSON.stringify(state.data))
+
 		
+
 
 		var socket = io.connect(_wsurl);
-
 		socket.emit('cooking', mess);
 		socket.on('kitchen', function(mess){
-			console.log(JSON.parse(decodeURI(mess)));
-			state.data = JSON.parse(decodeURI(mess));
-		})
 
-		// socket.on('clientOrder', function(data){
-		// 	console.log(12321)
-		// 	 console.log(JSON.parse(decodeURI(data)));
-		// })
+			state.data = JSON.parse(decodeURI(mess));
+			console.log(11111,'mess')
+
+			console.log(JSON.parse(decodeURI(mess)));
+			
+
+		})
 		
+	},
+	topover: (data, n)=>{
+
+		var abc = encodeURI(JSON.stringify(state.data));
+		var socket = io.connect(_wsurl);
+		socket.emit('success', abc);
+		// socket.on('suc', function(abc){
+		// 	// console.log(abc);
+		// })
 	}
 }
 

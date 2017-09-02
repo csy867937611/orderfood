@@ -1,58 +1,45 @@
-import http from '../../utils/HttpClient';
-import Vue from 'vue';
-import wsurl from '../../assets/common/common.js'
+// import http from '../../utils/HttpClient';
+// import Vue from 'vue';
+// import wsurl from '../../assets/common/common.js'
 
-var _wsurl = wsurl.global.wsurl;
+// var _wsurl = wsurl.global.wsurl;
 
+// const state = {
+// 	data: [],
+// 	all: [],
+// 	category: []
+// };
 
-const state = {
-	data: [],
-	all: [],
-	category: []
-};
+// const actions = {
+ 	
+ 
+// };
 
-const actions = {
- 	center: (store, n)=>{
- 		// console.log('actions')
- 		store.commit('center', n);
- 		console.log(store)
- 	},
- 	topover: (store, n)=>{
- 		store.commit('topover', n);
- 		console.log(store)
- 	}
-};
-
-const mutations = {
-	center: (data) => {
-		console.log(1111111111111)
+// const mutations = {
+// 	center: (data) => {
 		
+// 	},
+// 	topover: (data, n)=>{
 
-		var socket = io.connect(_wsurl);
-		socket.on('chilken', function(message){
-			
-		console.log(message)
-			
-		});
-	},
-	topover: (data, n)=>{
-
-		var abc = encodeURI(JSON.stringify(n));
-
-		var socket = io.connect(_wsurl);
-
-		socket.emit('success', abc);
-		socket.on('suc', function(abc){
-			console.log(JSON.parse(decodeURI(abc)));
-		})
-	}
+// <<<<<<< HEAD
 	
-};
+// =======
+// 		var abc = encodeURI(JSON.stringify(n));
+
+// 		var socket = io.connect(_wsurl);
+
+// 		socket.emit('success', abc);
+// 		socket.on('suc', function(abc){
+// 			console.log(JSON.parse(decodeURI(abc)));
+// 		})
+// >>>>>>> 6c3d2553076608992efbdbf221b570de8570ff34
+// 	}
+	
+// };
 
 
-
-export default {
-	state,
-	actions,
-	mutations
-}
+// export default {
+// 	state,
+// 	actions,
+// 	mutations
+// }

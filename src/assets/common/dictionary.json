@@ -25,7 +25,8 @@
 	    "verify"		 : "确认",
 	    "System Settings": "系统设置",
 	    "CreateTime"	 : "创建时间",
-	    "ModifiteTime"	 : "修改时间"
+	    "ModifiteTime"	 : "修改时间",
+	    "handle"		 : "操作"
 
 	},
 	"en": {
@@ -53,7 +54,8 @@
 	    "cancel"		 : "cancel",
 	    "verify"		 : "verify",
 	    "System Settings": "System Settings",
-	    "CreateTime"	 : "创建时间",
-	    "ModifiteTime"	 : "修改时间"
+	    "CreateTime"	 : "CreateTime",
+	    "ModifiteTime"	 : "ModifiteTime",
+	    "handle"		 : "handle"
 	}
 }
