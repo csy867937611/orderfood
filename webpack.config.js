@@ -58,7 +58,7 @@ module.exports = {
         loader: 'url-loader?limit=80000&name=fonts/[name].[md5.hash.hex:7].[ext]'
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|gif|svg)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
