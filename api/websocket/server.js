@@ -19,12 +19,25 @@ io.on('connection',function(client){
 		io.emit('offer',{status:true})
 	});
 	client.on('order',function(order){
+
 		var _order = JSON.parse(decodeURI(order));
 		_order.map((item, idx)=>{
 			item.status = '待接单'
 		})
 		io.emit('clientOrder',encodeURI(JSON.stringify(_order)))
 	});
+
+	//加单函数；
+	client.on('orderAdd',function(order){
+		console.log(123)
+		var _order = JSON.parse(decodeURI(order));
+		_order.map((item, idx)=>{
+			item.status = '待接单'
+		})
+		io.emit('clientOrderAdd',encodeURI(JSON.stringify(_order)))
+	});
+
+
 	client.on('cooking',function(schedule){
 		console.log(schedule);
 		io.emit('kitchen',schedule);

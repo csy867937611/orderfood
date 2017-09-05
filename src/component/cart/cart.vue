@@ -26,7 +26,9 @@
 				<span class = "total">{{total}}元</span>
 			</div>
 			<div class = "chen-pay">
-				<span @click = "order">下单</span>
+				<!-- <button @click = "order" disabled="false">下单</button> -->
+				<el-button type="primary"  @click = "order" v-if="this.$store.state.nav.client.length == 0">下单</el-button>
+				<el-button type="primary"  @click = "orderAdd" v-if="this.$store.state.nav.client.length > 0">加单</el-button>
 			</div>
 		</div>
 		
@@ -42,7 +44,8 @@
 		data: function(){
 			return {
 				arr: [],
-				total: null
+				total: null,
+				btn: false
 			}
 		},
 		methods:{
@@ -57,9 +60,7 @@
 						this.total += item.nowPrice;
 
 						item.num++;
-						// event.target.previousElementSibling.value = item.num;
-
-						console.log('item.num',item.num)                                                             
+                                                             
 						localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
 					}
 				});
@@ -81,9 +82,7 @@
 							var _idx = this.$store.state.nav.cart.indexOf(item);
 							this.$store.state.nav.cart.splice(_idx, 1);
 						}
-						// event.target.nextElementSibling.value = item.num;
-
-						console.log('item.num',item.num)                                                             
+					                                                             
 						localStorage.cart = JSON.stringify(this.$store.state.nav.cart);
 						console.log(this.$store.state.nav.cart.length, localStorage.cart.length );
 					}
@@ -101,6 +100,12 @@
 					localStorage.cart = '';
 					this.total = 0;
 
+					//element-ui提示下单成功；
+					this.btn = true;
+					this.$message({
+						message: '下单成功！'
+					})
+
 					//发送数据到服务端；
 					socket.emit('order', encodeURI(JSON.stringify(data)));
 
@@ -109,6 +114,27 @@
 				        console.log(JSON.parse(decodeURI(data)));
 				        this.$store.state.nav.client = JSON.parse(decodeURI(data));
 				    });
+				}
+			},
+			orderAdd: function(){
+				if(this.$store.state.nav.cart.length){
+					var socket = io.connect(_iourl);
+					var data = this.$store.state.nav.cart;
+
+					console.log(9999999);
+					//清空数组、清空localStorage;
+					this.$store.state.nav.cart = [];
+					localStorage.cart = '';
+					this.total = 0;
+
+					//element-ui提示下单成功；
+					this.btn = true;
+					this.$message({
+						message: '加单成功！'
+					})
+
+					//发送数据到服务端；
+					socket.emit('orderAdd', encodeURI(JSON.stringify(data)));
 				}
 			}
 		},
@@ -125,6 +151,11 @@
 				price += item.nowPrice * item.num;
 			});
 			this.total = price;
+
+			var socket = io.connect(_iourl);
+
+
+			
 
 		}
 	}

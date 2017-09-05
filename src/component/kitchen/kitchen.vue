@@ -2,6 +2,7 @@
 	<div class="kit-body">
 		<div class="kit-header">
 			<h1>小蚂蚁点餐系统</h1>
+			<span class="sp" @click="back">＜</span>
 		</div>
 		<div class="kit-content">
 			<div class="block">
@@ -13,7 +14,6 @@
 				</span>
 			</div>
 			<div class="kit-contenter" >
-				<!-- <div class="dingdan" v-for="(value,key) in this.$store.state.nav.category"> -->
 				<div class="dingdan" >
 					<div class="dingdan2" v-for="(value,key) in this.$store.state.jiedan.data">
 						<p class="ppp" :data-id = "value.ID">
@@ -62,30 +62,18 @@
 		},
 		methods: {
 			center: function(){
-				$('.dingdan').show();
-				$('.success').hide();
-				console.log('dingdan')
-				this.$store.dispatch('center')
-
 			},
 			over: function(){
-				$('.success').show();
-				$('.dingdan').hide();
-				console.log('success')
+				
 			},
 			serving: function(){
-				console.log(555);
+				
 			},
 			topover: function(event){
-				console.log(this.$store.state.jiedan.data);
-				var  currentId = $(event.target).parents("p").prev().data('id');
-				this.$store.state.jiedan.data.map((item, idx)=>{
-					if(item.ID == currentId){
-						item.status = '已完成';
-					}
-				})
-				this.$store.dispatch('topover', this.$store.state.jiedan.data);
-				console.log('已完成', currentId);
+				
+			},
+			back: function(){
+				
 			}
 			
 			
