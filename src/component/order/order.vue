@@ -1,18 +1,14 @@
 <template>
 	<div class="bigbox">
-		<div class="head">
-			<h1>头部</h1>	
-		</div>
-		<hot_nav></hot_nav>
+		<p><router-link to="/home">客户点餐</router-link></p>
+		<p><router-link to="/waiter">小二端</router-link></p>
+		<p><router-link to="/jiedan">厨房端</router-link></p>
+		<p><router-link to="/adminHome">后台</router-link></p>
 	</div>
 </template>
 <script type="text/javascript">
-	import hot_nav from "./hot_nav/hot_nav.vue"
 	import './order.scss'
 	export default{
-		components:{
-			'hot_nav':hot_nav
-		}
 	}
 </script>
 

@@ -16,7 +16,7 @@ module.exports = {
         options: {
           loaders: {
             'scss': 'vue-style-loader!css-loader!sass-loader',
-           
+           'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
           }
         }
       },
@@ -75,7 +75,7 @@ module.exports = {
               loader: "sass-loader" // compiles Sass to CSS
           }]
           // loader: ExtractTextPlugin.extract("style", 'css!sass') //这里用了样式分离出来的插件，如果不想分离出来，可以直接这样写 loader:'style!css!sass'
-      }   
+      }  
     ]
   },
   resolve: {

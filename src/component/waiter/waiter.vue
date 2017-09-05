@@ -56,7 +56,7 @@
 				input:''
 			}
 		},
-		created:function(){
+		beforeMount:function(){
 			this.$store.dispatch('date');
 			this.$store.dispatch('message');
 			var socket = io.connect(_wsurl);
